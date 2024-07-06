@@ -15,10 +15,12 @@ func _on_ready():
 func _on_toggle_menu():
 	if is_paused:
 		get_tree().paused = false
+		Engine.time_scale=1
 		get_node("ButtonResume").hide()
 		get_node("ButtonQuit").hide()
 	else:
 		get_tree().paused = true
+		Engine.time_scale=0
 		get_node("ButtonResume").show()
 		get_node("ButtonQuit").show()
 	is_paused = !is_paused
