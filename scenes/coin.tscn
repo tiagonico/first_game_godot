@@ -114,6 +114,7 @@ shape = SubResource("CircleShape2D_a6yc5")
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_2ir76")
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="Timer" type="Timer" parent="."]

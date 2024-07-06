@@ -9,4 +9,4 @@ func _on_body_entered(_body):
 
 func _on_timer_timeout():
 	Engine.time_scale = 1
-	get_tree().reload_current_scene()
+	Global.go_to_current_level()
