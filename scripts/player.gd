@@ -14,6 +14,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
 
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
 	if Engine.time_scale == 0:
 		pass
 	elif game_manager.level_pass:
@@ -26,9 +30,6 @@ func _physics_process(delta):
 			death_audio.play()
 			firstLoop = false
 	else:
-		# Add the gravity.
-		if not is_on_floor():
-			velocity.y += gravity * delta
 		
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
@@ -58,4 +59,4 @@ func _physics_process(delta):
 			else: 
 				animated_sprite_2d.play("run")
 
-		move_and_slide()
+	move_and_slide()

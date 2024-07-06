@@ -461,6 +461,7 @@ _data = {
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 script = ExtResource("1_xuq4i")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -591,6 +592,7 @@ vertical_alignment = 1
 
 [node name="HUD" parent="." instance=ExtResource("11_vwi2p")]
 unique_name_in_owner = true
+process_mode = 1
 
 [connection signal="coins_changed" from="GameManager" to="HUD" method="_on_coins_changed"]
 [connection signal="lifes_changed" from="GameManager" to="HUD" method="_on_lifes_changed"]
