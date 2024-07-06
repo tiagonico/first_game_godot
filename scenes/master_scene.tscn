@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxcjm2ceseuxd"]
+
+[ext_resource type="Script" path="res://scripts/global.gd" id="1_er4gd"]
+
+[node name="Master Scene" type="Node2D"]
+script = ExtResource("1_er4gd")
+
+[connection signal="ready" from="." to="." method="_on_ready"]

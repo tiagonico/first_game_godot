@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpavm8a5tvn4l"]
+
+[ext_resource type="Script" path="res://scripts/Button.gd" id="1_ca6rr"]
+[ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_nay07"]
+[ext_resource type="Texture2D" uid="uid://c0lqlnfbx8v7a" path="res://assets/images/background.jpg" id="3_5bw51"]
+[ext_resource type="Script" path="res://scripts/Button2.gd" id="3_045pv"]
+
+[node name="Menu" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 501.0
+offset_top = 467.0
+offset_right = 770.0
+offset_bottom = 545.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_nay07")
+theme_override_font_sizes/font_size = 32
+text = "PLAY"
+script = ExtResource("1_ca6rr")
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_left = 501.0
+offset_top = 565.0
+offset_right = 770.0
+offset_bottom = 643.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_nay07")
+theme_override_font_sizes/font_size = 32
+text = "EXIT"
+script = ExtResource("3_045pv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(653, 362)
+scale = Vector2(2.04068, 2.00833)
+texture = ExtResource("3_5bw51")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
+[connection signal="ready" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_ready"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer/Button2" method="_on_pressed"]
+[connection signal="ready" from="CanvasLayer/Button2" to="CanvasLayer/Button" method="_on_button_2_ready"]

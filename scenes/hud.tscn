@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfn0sui81vwg"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_0sa2o"]
+[ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_ph7f4"]
+[ext_resource type="Texture2D" uid="uid://dbxkl5favbmgy" path="res://assets/sprites/heart pixel.png" id="2_iiowt"]
+[ext_resource type="Texture2D" uid="uid://caapnb0djjkg7" path="res://assets/sprites/coin.png" id="3_04gn2"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_0sa2o")
+
+[node name="LabelLife" type="Label" parent="."]
+offset_left = 85.0
+offset_top = 23.0
+offset_right = 165.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ph7f4")
+theme_override_font_sizes/font_size = 32
+text = "x 3
+"
+vertical_alignment = 1
+
+[node name="LabelCoin" type="Label" parent="."]
+offset_left = 86.0
+offset_top = 88.0
+offset_right = 181.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(1, 0.984314, 0, 1)
+theme_override_fonts/font = ExtResource("1_ph7f4")
+theme_override_font_sizes/font_size = 32
+text = "x 0
+
+"
+vertical_alignment = 1
+
+[node name="SpriteHeart" type="Sprite2D" parent="."]
+position = Vector2(42, 39)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_iiowt")
+
+[node name="SpriteCoin" type="Sprite2D" parent="."]
+position = Vector2(41, 103)
+scale = Vector2(5, 5)
+texture = ExtResource("3_04gn2")
+region_enabled = true
+region_rect = Rect2(3, 3, 10, 10)
+
+[node name="ButtonResume" type="Button" parent="."]
+offset_left = 384.0
+offset_top = 260.0
+offset_right = 800.0
+offset_bottom = 345.0
+theme_override_fonts/font = ExtResource("1_ph7f4")
+theme_override_font_sizes/font_size = 48
+text = "Resume"
+
+[node name="ButtonQuit" type="Button" parent="."]
+offset_left = 386.0
+offset_top = 370.0
+offset_right = 802.0
+offset_bottom = 455.0
+theme_override_fonts/font = ExtResource("1_ph7f4")
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="pressed" from="ButtonResume" to="." method="_on_button_resume_pressed"]
+[connection signal="pressed" from="ButtonQuit" to="." method="_on_button_quit_pressed"]
