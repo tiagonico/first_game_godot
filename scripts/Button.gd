@@ -5,5 +5,5 @@ extends Button
 func _on_pressed():
 	transition.play("fade_out")
 
-func _on_transition_animation_finished(anim_name):
+func _on_transition_animation_finished(_anim_name):
 	Global.go_to_current_level()
