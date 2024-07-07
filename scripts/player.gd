@@ -17,6 +17,8 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		if velocity.y < 0 and Input.is_action_just_released("jump"):
+			velocity.y = -50
 
 	if Engine.time_scale == 0:
 		pass
