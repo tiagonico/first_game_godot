@@ -1,6 +1,7 @@
 extends Node
 
 @onready var player = %Player
+@onready var transition = %Transition
 
 var is_dead = false
 var level_pass = false
@@ -18,10 +19,12 @@ func add_coin_number():
 	coins_changed.emit(PlayerVariables.coins_number)
 
 func _on_ready():
+	transition.play("fade_in")
 	SignalManager.player_died.connect(player_dead)
 	SignalManager.toggle_level_passed.connect(toggle_level_passed)
 	lifes_changed.emit(PlayerVariables.lifes_number)
 	coins_changed.emit(PlayerVariables.coins_number)
+	
 
 func toggle_level_passed():
 	level_pass = !level_pass
@@ -35,5 +38,3 @@ func player_dead():
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		toggle_menu.emit()
-		
-

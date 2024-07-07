@@ -1,9 +1,69 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpavm8a5tvn4l"]
+[gd_scene load_steps=8 format=3 uid="uid://cpavm8a5tvn4l"]
 
 [ext_resource type="Script" path="res://scripts/Button.gd" id="1_ca6rr"]
 [ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_nay07"]
 [ext_resource type="Texture2D" uid="uid://c0lqlnfbx8v7a" path="res://assets/images/background.jpg" id="3_5bw51"]
 [ext_resource type="Script" path="res://scripts/Button2.gd" id="3_045pv"]
+
+[sub_resource type="Animation" id="Animation_81qvi"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Transition/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3urjy"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Transition/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ijwao"]
+_data = {
+"fade_in": SubResource("Animation_81qvi"),
+"fade_out": SubResource("Animation_3urjy")
+}
 
 [node name="Menu" type="Node2D"]
 
@@ -31,6 +91,20 @@ theme_override_font_sizes/font_size = 32
 text = "EXIT"
 script = ExtResource("3_045pv")
 
+[node name="Transition" type="AnimationPlayer" parent="CanvasLayer"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_ijwao")
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Transition"]
+visible = false
+offset_left = -4.0
+offset_right = 1318.0
+offset_bottom = 727.0
+color = Color(0, 0, 0, 1)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(653, 362)
 scale = Vector2(2.04068, 2.00833)
@@ -40,3 +114,4 @@ texture = ExtResource("3_5bw51")
 [connection signal="ready" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_ready"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer/Button2" method="_on_pressed"]
 [connection signal="ready" from="CanvasLayer/Button2" to="CanvasLayer/Button" method="_on_button_2_ready"]
+[connection signal="animation_finished" from="CanvasLayer/Transition" to="CanvasLayer/Button" method="_on_transition_animation_finished"]
