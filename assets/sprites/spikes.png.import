@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5i2hyvfxxbci"
-path="res://.godot/imported/waves.png-eaf24c5101f895533f4d0df7d131e1c8.ctex"
+uid="uid://if1gobuy30fd"
+path="res://.godot/imported/spikes.png-96dcd08cb5f6ee429e14e23ef70f641d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/waves.png"
-dest_files=["res://.godot/imported/waves.png-eaf24c5101f895533f4d0df7d131e1c8.ctex"]
+source_file="res://assets/sprites/spikes.png"
+dest_files=["res://.godot/imported/spikes.png-96dcd08cb5f6ee429e14e23ef70f641d.ctex"]
 
 [params]
 

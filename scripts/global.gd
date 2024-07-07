@@ -2,6 +2,7 @@ extends Node
 
 var current_scene = null
 var max_level = 2
+var coins_to_life = 20
 
 func _ready():
 	var root = get_tree().root

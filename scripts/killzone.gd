@@ -9,4 +9,8 @@ func _on_body_entered(_body):
 
 func _on_timer_timeout():
 	Engine.time_scale = 1
-	Global.go_to_current_level()
+	if PlayerVariables.has_lifes():
+		Global.go_to_current_level()
+	else:
+		PlayerVariables.reset_variables()
+		Global.go_to_main_menu()

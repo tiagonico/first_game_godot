@@ -11,7 +11,7 @@ signal toggle_menu
 
 func add_coin_number():
 	PlayerVariables.coins_number += 1
-	if PlayerVariables.coins_number == 3:
+	if PlayerVariables.coins_number == Global.coins_to_life:
 		PlayerVariables.lifes_number += 1
 		PlayerVariables.coins_number = 0
 		lifes_changed.emit(PlayerVariables.lifes_number)
@@ -28,12 +28,9 @@ func toggle_level_passed():
 
 func player_dead():
 	is_dead = true
-	PlayerVariables.lifes_number -= 1
-	if PlayerVariables.lifes_number < 0:
+	PlayerVariables.lose_life()
+	if !PlayerVariables.has_lifes():
 		Engine.time_scale = 1
-		PlayerVariables.player_level = 1
-		Global.go_to_main_menu()
-	PlayerVariables.coins_number = 0
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
