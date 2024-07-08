@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cfd3b7ag7cd4d"]
+[gd_scene load_steps=30 format=3 uid="uid://cfd3b7ag7cd4d"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_xuq4i"]
 [ext_resource type="Texture2D" uid="uid://crfrmakne58gd" path="res://assets/sprites/world_tileset.png" id="2_8s3jo"]
@@ -13,7 +13,6 @@
 [ext_resource type="FontFile" uid="uid://dmf2to8tkpk5i" path="res://assets/fonts/PixelOperator8.ttf" id="8_bf6na"]
 [ext_resource type="PackedScene" uid="uid://bcmdxblly1hyc" path="res://scenes/tip.tscn" id="9_hai03"]
 [ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="10_ol3ow"]
-[ext_resource type="PackedScene" uid="uid://dtor1i3bm8dy5" path="res://scenes/platform_beach_blink.tscn" id="11_2rsbh"]
 [ext_resource type="PackedScene" uid="uid://w8jlfrhlgaxf" path="res://scenes/platform_beach_1.tscn" id="11_c5tmd"]
 [ext_resource type="PackedScene" uid="uid://bfn0sui81vwg" path="res://scenes/hud.tscn" id="11_vwi2p"]
 [ext_resource type="PackedScene" uid="uid://bg0di7liwfs16" path="res://scenes/seagull.tscn" id="12_ukv7u"]
@@ -653,9 +652,6 @@ libraries = {
 "": SubResource("AnimationLibrary_8fpt6")
 }
 autoplay = "blink"
-
-[node name="Platform Beach Blink" parent="Platforms" instance=ExtResource("11_2rsbh")]
-position = Vector2(-1074, -581)
 
 [node name="Monsters" type="Node" parent="."]
 

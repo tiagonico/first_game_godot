@@ -978,13 +978,13 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="Transition"]
-visible = false
 offset_left = -710.0
 offset_top = -272.0
 offset_right = 29.0
 offset_bottom = 282.0
 color = Color(0, 0, 0, 1)
 
+[connection signal="button_pressed" from="GameManager" to="HUD" method="_on_game_manager_button_pressed"]
 [connection signal="coins_changed" from="GameManager" to="HUD" method="_on_coins_changed"]
 [connection signal="lifes_changed" from="GameManager" to="HUD" method="_on_lifes_changed"]
 [connection signal="ready" from="GameManager" to="GameManager" method="_on_ready"]

@@ -1,13 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtor1i3bm8dy5"]
+[gd_scene load_steps=4 format=3 uid="uid://cui38dbd8y23k"]
 
-[ext_resource type="Script" path="res://scripts/platform_beach_blink.gd" id="1_jw883"]
 [ext_resource type="Texture2D" uid="uid://ccbv4sium65ro" path="res://assets/sprites/platforms.png" id="2_jcm4f"]
+
+[sub_resource type="GDScript" id="GDScript_mqopj"]
+script/source = "extends AnimatableBody2D
+
+@onready var timer = $Timer
+@onready var collision_shape_2d = $CollisionShape2D
+var aux = 0
+
+func _ready():
+	timer.wait_time = 2
+	timer.start()
+
+func _on_timer_timeout():
+	if aux%2:
+		show()
+		collision_shape_2d.disabled = false
+	else:
+		hide()
+		collision_shape_2d.disabled = true
+	aux+=1
+	timer.start()
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bir62"]
 size = Vector2(32, 9)
 
 [node name="Platform Beach Blink" type="AnimatableBody2D"]
-script = ExtResource("1_jw883")
+script = SubResource("GDScript_mqopj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_jcm4f")

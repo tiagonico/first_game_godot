@@ -2,7 +2,7 @@ extends Node
 
 var lifes_number = 2
 var coins_number = 0
-var player_level = 2
+var player_level = 1
 
 func reset_variables():
 	lifes_number = 2

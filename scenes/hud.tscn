@@ -66,5 +66,7 @@ theme_override_font_sizes/font_size = 48
 text = "Quit"
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="mouse_entered" from="ButtonResume" to="." method="_on_button_resume_mouse_entered"]
 [connection signal="pressed" from="ButtonResume" to="." method="_on_button_resume_pressed"]
+[connection signal="mouse_entered" from="ButtonQuit" to="." method="_on_button_quit_mouse_entered"]
 [connection signal="pressed" from="ButtonQuit" to="." method="_on_button_quit_pressed"]
