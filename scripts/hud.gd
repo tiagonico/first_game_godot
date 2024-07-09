@@ -35,7 +35,7 @@ func _on_button_resume_pressed():
 
 func _on_button_quit_pressed():
 	_on_toggle_menu()
-	PlayerVariables.player_level = 1
+	PlayerVariables.reset_variables()
 	Global.go_to_main_menu()
 
 func focus_button():
@@ -52,7 +52,7 @@ func press_button():
 	elif button_selected == 2:
 		_on_button_quit_pressed()
 		
-func _on_game_manager_button_pressed(option):
+func button_pressed(option):
 	if option == "up":
 		button_selected-=1
 		if button_selected == 0:

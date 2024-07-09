@@ -1,73 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bg0di7liwfs16"]
+[gd_scene load_steps=2 format=3 uid="uid://qljgsi3knjey"]
 
-[ext_resource type="Script" path="res://scripts/Seagull.gd" id="1_g0622"]
-[ext_resource type="Texture2D" uid="uid://b1xe6wmgwawf2" path="res://assets/sprites/seagull.png" id="2_fsokp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ns50e"]
+size = Vector2(18, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qiswd"]
-atlas = ExtResource("2_fsokp")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sr5vw"]
-atlas = ExtResource("2_fsokp")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dxfem"]
-atlas = ExtResource("2_fsokp")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dji8q"]
-atlas = ExtResource("2_fsokp")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ftwhy"]
-atlas = ExtResource("2_fsokp")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t0ws7"]
-atlas = ExtResource("2_fsokp")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_nyyd7"]
-animations = [{
-"frames": [{
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_qiswd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sr5vw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dxfem")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dji8q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ftwhy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t0ws7")
-}],
-"loop": true,
-"name": &"default",
-"speed": 6.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk7d2"]
-size = Vector2(17, 10)
-
-[node name="Seagull" type="CharacterBody2D"]
-script = ExtResource("1_g0622")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_nyyd7")
-autoplay = "default"
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="Seagull" type="AnimatableBody2D"]
+position = Vector2(-1100, -600)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 1)
-shape = SubResource("RectangleShape2D_nk7d2")
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_ns50e")

@@ -21,7 +21,7 @@ func _on_body_entered(_body):
 
 func _on_timer_timeout():
 	SignalManager.toggle_level_passed.emit()
-	Global.go_to_next_level()	
+	Global.go_to_next_level()
 
 func _on_timer_text_timeout():
 	if(aux%2):

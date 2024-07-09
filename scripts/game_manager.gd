@@ -51,9 +51,9 @@ func _process(_delta):
 		mouse_position = get_viewport().get_mouse_position()
 		
 		if Input.is_action_just_pressed("up"):
-			button_pressed.emit("up")
+			hud.button_pressed("up")
 		elif Input.is_action_just_pressed("down"):
-			button_pressed.emit("down")
+			hud.button_pressed("down")
 		elif Input.is_action_just_pressed("jump"):
-			button_pressed.emit("select")
+			hud.button_pressed("select")
 			

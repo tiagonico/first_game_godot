@@ -43,6 +43,7 @@ func go_to_next_level():
 		PlayerVariables.player_level += 1
 		goto_scene("res://scenes/level_"+str(next_level)+".tscn")
 	else:
+		PlayerVariables.reset_variables()
 		go_to_main_menu()
 		
 func go_to_current_level():

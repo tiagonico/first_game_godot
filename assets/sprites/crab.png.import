@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://if10868pssbc"
-path="res://.godot/imported/seagulL.png-35ac84678641682d01ac0898ca3c767a.ctex"
+uid="uid://dqo6lqo86nq0w"
+path="res://.godot/imported/crab.png-563733eb7bddf3b59f86d9dd36cf836b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scripts/seagulL.png"
-dest_files=["res://.godot/imported/seagulL.png-35ac84678641682d01ac0898ca3c767a.ctex"]
+source_file="res://assets/sprites/crab.png"
+dest_files=["res://.godot/imported/crab.png-563733eb7bddf3b59f86d9dd36cf836b.ctex"]
 
 [params]
 

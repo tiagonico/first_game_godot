@@ -98,6 +98,7 @@ libraries = {
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Transition"]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
 offset_left = -4.0
 offset_right = 1318.0
 offset_bottom = 727.0

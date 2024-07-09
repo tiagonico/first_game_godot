@@ -7,6 +7,7 @@ var player_level = 1
 func reset_variables():
 	lifes_number = 2
 	coins_number = 0
+	player_level = 1
 	
 func lose_life():
 	lifes_number-=1
