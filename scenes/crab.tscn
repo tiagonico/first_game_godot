@@ -1,23 +1,126 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3hgjj7rr0yym"]
+[gd_scene load_steps=18 format=3 uid="uid://d3hgjj7rr0yym"]
 
 [ext_resource type="Script" path="res://scripts/crab.gd" id="1_o6u8v"]
-[ext_resource type="Texture2D" uid="uid://dqo6lqo86nq0w" path="res://assets/sprites/crab.png" id="2_42pdl"]
+[ext_resource type="Texture2D" uid="uid://dkxbn3vcycrft" path="res://assets/sprites/slime_purple.png" id="2_ywuut"]
 [ext_resource type="PackedScene" uid="uid://c5fe7mvbpn53j" path="res://scenes/killzone.tscn" id="3_wqeyh"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmpjp"]
+atlas = ExtResource("2_ywuut")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbdnu"]
+atlas = ExtResource("2_ywuut")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kog65"]
+atlas = ExtResource("2_ywuut")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylaj7"]
+atlas = ExtResource("2_ywuut")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l2bc"]
+atlas = ExtResource("2_ywuut")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqvde"]
+atlas = ExtResource("2_ywuut")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckw1f"]
+atlas = ExtResource("2_ywuut")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc73x"]
+atlas = ExtResource("2_ywuut")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddvbl"]
+atlas = ExtResource("2_ywuut")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iogbo"]
+atlas = ExtResource("2_ywuut")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp4cc"]
+atlas = ExtResource("2_ywuut")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_604yd"]
+atlas = ExtResource("2_ywuut")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iq2mt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmpjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbdnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kog65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylaj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l2bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqvde")
+}],
+"loop": false,
+"name": &"exausted",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckw1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc73x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddvbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iogbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp4cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_604yd")
+}],
+"loop": true,
+"name": &"running",
+"speed": 10.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87a1y"]
-size = Vector2(48, 23)
+size = Vector2(14, 15.5)
 
 [node name="Crab" type="Node2D"]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_o6u8v")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_42pdl")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iq2mt")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="Killzone" parent="." instance=ExtResource("3_wqeyh")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(0, 4.5)
+position = Vector2(0, 4.75)
 shape = SubResource("RectangleShape2D_87a1y")
 
 [node name="ExaustedTimer" type="Timer" parent="."]
@@ -30,11 +133,11 @@ one_shot = true
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, 5)
-target_position = Vector2(40, 0)
+target_position = Vector2(13, 0)
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, 5)
-target_position = Vector2(-40, 0)
+target_position = Vector2(-13, 0)
 
 [connection signal="timeout" from="ExaustedTimer" to="." method="_on_exausted_timer_timeout"]
 [connection signal="timeout" from="RunningTimer" to="." method="_on_running_timer_timeout"]

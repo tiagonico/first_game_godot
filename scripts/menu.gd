@@ -9,6 +9,7 @@ var number_of_buttons = 2
 @onready var transition = %Transition
 
 func _ready():
+	mouse_position = get_viewport().get_mouse_position()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	focus_button()
 
