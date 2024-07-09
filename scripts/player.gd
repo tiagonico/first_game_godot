@@ -3,6 +3,7 @@ extends CharacterBody2D
 var firstLoop = true
 const SPEED = 100.0
 const JUMP_VELOCITY = -280.0
+var walk = 1
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var game_manager = %GameManager
 @onready var jump_audio = $JumpAudio
@@ -41,8 +42,13 @@ func _physics_process(delta):
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction = Input.get_axis("move_left", "move_right")
 		
+		if Input.is_action_just_pressed("walk"):
+			walk = 0.2
+		if Input.is_action_just_released("walk"):
+			walk = 1
+		
 		if direction:
-			velocity.x = direction * SPEED
+			velocity.x = direction * SPEED * walk
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			
@@ -58,6 +64,8 @@ func _physics_process(delta):
 		else:
 			if direction == 0:
 				animated_sprite_2d.play("idle")
+			elif walk < 1:
+				animated_sprite_2d.play("walk")
 			else: 
 				animated_sprite_2d.play("run")
 
