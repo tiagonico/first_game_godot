@@ -21,7 +21,11 @@ func _on_body_entered(_body):
 
 func _on_timer_timeout():
 	SignalManager.toggle_level_passed.emit()
-	Global.go_to_next_level()
+	transition.play("fade_out")
+	
+func _on_transition_animation_finished(anim_name):
+	if anim_name == "fade_out":
+		Global.go_to_next_level()
 
 func _on_timer_text_timeout():
 	if(aux%2):

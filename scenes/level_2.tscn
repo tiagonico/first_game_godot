@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cfd3b7ag7cd4d"]
+[gd_scene load_steps=57 format=3 uid="uid://cfd3b7ag7cd4d"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_xuq4i"]
 [ext_resource type="Texture2D" uid="uid://crfrmakne58gd" path="res://assets/sprites/world_tileset.png" id="2_8s3jo"]
@@ -916,6 +916,9 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_luc6u"]
+size = Vector2(25, 11)
+
 [sub_resource type="Animation" id="Animation_elslq"]
 resource_name = "fade_in"
 tracks/0/type = "value"
@@ -995,7 +998,7 @@ layer_1/tile_data = PackedInt32Array(196561, 131072, 1, 196562, 131072, 1, 19656
 
 [node name="Player" parent="." instance=ExtResource("3_ru0mk")]
 unique_name_in_owner = true
-position = Vector2(-1020, -555)
+position = Vector2(-1023, -555)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
@@ -1247,31 +1250,31 @@ autoplay = "new_animation"
 
 [node name="Invisible Platform" parent="Platforms" instance=ExtResource("12_cwocy")]
 visible = false
-position = Vector2(3752, -597)
+position = Vector2(3745, -597)
 
 [node name="Invisible Platform2" parent="Platforms" instance=ExtResource("12_cwocy")]
 visible = false
-position = Vector2(3752, -640)
+position = Vector2(3745, -640)
 
 [node name="Invisible Platform3" parent="Platforms" instance=ExtResource("12_cwocy")]
 visible = false
-position = Vector2(3752, -683)
+position = Vector2(3745, -683)
 
 [node name="Invisible Platform4" parent="Platforms" instance=ExtResource("12_cwocy")]
 visible = false
-position = Vector2(3752, -723)
+position = Vector2(3745, -723)
 
 [node name="Invisible Platform5" parent="Platforms" instance=ExtResource("12_cwocy")]
 visible = false
-position = Vector2(3784, -723)
+position = Vector2(3777, -723)
 
 [node name="Invisible Platform6" parent="Platforms" instance=ExtResource("12_cwocy")]
 visible = false
-position = Vector2(3815, -723)
+position = Vector2(3809, -723)
 
 [node name="Invisible Platform7" parent="Platforms" instance=ExtResource("12_cwocy")]
 visible = false
-position = Vector2(3847, -723)
+position = Vector2(3841, -723)
 
 [node name="Invisible Platform8" parent="Platforms" instance=ExtResource("12_cwocy")]
 visible = false
@@ -1338,6 +1341,10 @@ autoplay = "default"
 frame = 4
 frame_progress = 0.313512
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Monsters/Seagull"]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_luc6u")
+
 [node name="Seagull2" parent="Monsters" instance=ExtResource("13_tt6ce")]
 position = Vector2(265, -632)
 
@@ -1352,6 +1359,10 @@ sprite_frames = SubResource("SpriteFrames_bep2k")
 autoplay = "default"
 frame = 4
 frame_progress = 0.313512
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Monsters/Seagull2"]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_luc6u")
 
 [node name="Seagull3" parent="Monsters" instance=ExtResource("13_tt6ce")]
 position = Vector2(780, -632)
@@ -1369,6 +1380,10 @@ frame = 4
 frame_progress = 0.313512
 flip_h = true
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Monsters/Seagull3"]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_luc6u")
+
 [node name="Seagull4" parent="Monsters" instance=ExtResource("13_tt6ce")]
 position = Vector2(820, -632)
 
@@ -1383,6 +1398,10 @@ sprite_frames = SubResource("SpriteFrames_bep2k")
 autoplay = "default"
 frame = 4
 frame_progress = 0.313512
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Monsters/Seagull4"]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_luc6u")
 
 [node name="Crab" parent="Monsters" instance=ExtResource("14_osd45")]
 position = Vector2(-133, -567)
@@ -1470,7 +1489,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Tip3" parent="Tips" instance=ExtResource("9_hai03")]
-position = Vector2(3750, -610)
+position = Vector2(3740, -610)
 
 [node name="Label" type="Label" parent="Tips/Tip3"]
 offset_left = -33.0
@@ -1485,7 +1504,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Tip4" parent="Tips" instance=ExtResource("9_hai03")]
-position = Vector2(3750, -653)
+position = Vector2(3741, -653)
 
 [node name="Label" type="Label" parent="Tips/Tip4"]
 offset_left = -33.0
@@ -1499,7 +1518,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Tip5" parent="Tips" instance=ExtResource("9_hai03")]
-position = Vector2(3750, -696)
+position = Vector2(3740, -696)
 
 [node name="Label" type="Label" parent="Tips/Tip5"]
 offset_left = -47.0
@@ -1514,7 +1533,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Tip6" parent="Tips" instance=ExtResource("9_hai03")]
-position = Vector2(3750, -736)
+position = Vector2(3741, -735)
 
 [node name="Label" type="Label" parent="Tips/Tip6"]
 offset_left = -74.0
@@ -1548,7 +1567,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Tip8" parent="Tips" instance=ExtResource("9_hai03")]
-position = Vector2(3957, -557)
+position = Vector2(3955, -557)
 
 [node name="Label" type="Label" parent="Tips/Tip8"]
 offset_left = -111.0
@@ -1563,8 +1582,23 @@ you see the next message."
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Tip15" parent="Tips" instance=ExtResource("9_hai03")]
+position = Vector2(4048, -557)
+
+[node name="Label" type="Label" parent="Tips/Tip15"]
+offset_left = -111.0
+offset_top = -59.0
+offset_right = 109.0
+offset_bottom = -18.0
+theme_override_fonts/font = ExtResource("10_ol3ow")
+theme_override_font_sizes/font_size = 8
+text = "Keep walking, but
+REALLY SLOWLY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Tip9" parent="Tips" instance=ExtResource("9_hai03")]
-position = Vector2(4087, -557)
+position = Vector2(4085, -558)
 
 [node name="Label" type="Label" parent="Tips/Tip9"]
 offset_left = -100.0
@@ -1660,12 +1694,10 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="Transition"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-offset_left = -710.0
-offset_top = -272.0
-offset_right = 29.0
-offset_bottom = 282.0
+offset_left = -1369.0
+offset_top = -840.0
+offset_right = -630.0
+offset_bottom = -286.0
 color = Color(0, 0, 0, 1)
 
 [connection signal="coins_changed" from="GameManager" to="HUD" method="_on_coins_changed"]
@@ -1673,3 +1705,4 @@ color = Color(0, 0, 0, 1)
 [connection signal="ready" from="GameManager" to="GameManager" method="_on_ready"]
 [connection signal="toggle_menu" from="GameManager" to="HUD" method="_on_toggle_menu"]
 [connection signal="ready" from="HUD" to="GameManager" method="_on_hud_ready"]
+[connection signal="animation_finished" from="Transition" to="Level Goal" method="_on_transition_animation_finished"]

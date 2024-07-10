@@ -70,20 +70,30 @@ script = ExtResource("1_k2rgp")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ButtonPlay" type="Button" parent="CanvasLayer"]
-offset_left = 501.0
-offset_top = 467.0
-offset_right = 770.0
-offset_bottom = 545.0
+offset_left = 503.0
+offset_top = 391.0
+offset_right = 772.0
+offset_bottom = 469.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_nay07")
 theme_override_font_sizes/font_size = 32
 text = "PLAY"
 
+[node name="ButtonSettings" type="Button" parent="CanvasLayer"]
+offset_left = 503.0
+offset_top = 479.0
+offset_right = 772.0
+offset_bottom = 557.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_nay07")
+theme_override_font_sizes/font_size = 32
+text = "SETTINGS"
+
 [node name="ButtonQuit" type="Button" parent="CanvasLayer"]
-offset_left = 501.0
-offset_top = 565.0
-offset_right = 770.0
-offset_bottom = 643.0
+offset_left = 504.0
+offset_top = 566.0
+offset_right = 773.0
+offset_bottom = 644.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_nay07")
 theme_override_font_sizes/font_size = 32
@@ -111,6 +121,8 @@ texture = ExtResource("3_5bw51")
 
 [connection signal="mouse_entered" from="CanvasLayer/ButtonPlay" to="." method="_on_button_play_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ButtonSettings" to="." method="_on_button_play_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/ButtonSettings" to="." method="_on_button_play_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/ButtonQuit" to="." method="_on_button_quit_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/Transition" to="." method="_on_transition_animation_finished"]
