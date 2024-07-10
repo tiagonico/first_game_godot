@@ -3,6 +3,16 @@ extends Node
 var current_scene = null
 var max_level = 2
 var coins_to_life = 20
+var time = 0
+
+func get_seconds():
+	return fmod(time, 60)
+func get_minutes():
+	return fmod(time, 3600) / 60
+func get_hours():
+	return get_minutes() / 60
+func reset_time():
+	time = 0
 
 func _ready():
 	var root = get_tree().root

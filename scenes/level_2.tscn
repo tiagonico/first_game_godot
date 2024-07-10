@@ -1275,6 +1275,7 @@ position = Vector2(3809, -723)
 [node name="Invisible Platform7" parent="Platforms" instance=ExtResource("12_cwocy")]
 visible = false
 position = Vector2(3841, -723)
+scale = Vector2(1.5, 1)
 
 [node name="Invisible Platform8" parent="Platforms" instance=ExtResource("12_cwocy")]
 visible = false

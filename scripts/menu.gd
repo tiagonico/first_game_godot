@@ -69,6 +69,7 @@ func _on_button_play_pressed():
 
 func _on_transition_animation_finished(_anim_name):
 	PlayerVariables.reset_variables()
+	Global.reset_time()
 	Global.go_to_current_level()
 
 func _on_button_quit_pressed():

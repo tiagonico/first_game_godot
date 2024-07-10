@@ -4,6 +4,10 @@ var is_paused = false
 var button_selected = 1
 var number_of_buttons = 2 
 
+@onready var label_seconds = $LabelSeconds
+@onready var label_minutes = $LabelMinutes
+@onready var label_hours = $LabelHours
+
 func _on_lifes_changed(amount):
 	get_node("LabelLife").text = "x " + str(amount)
 
@@ -73,3 +77,8 @@ func _on_button_resume_mouse_entered():
 func _on_button_quit_mouse_entered():
 	button_selected = 2
 	focus_button()
+	
+func change_time(seconds,minutes,hours):
+	label_seconds.text = ":%02d" % seconds
+	label_minutes.text = ":%02d" % minutes
+	label_hours.text = "%02d" % hours
