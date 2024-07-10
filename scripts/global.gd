@@ -4,6 +4,7 @@ var current_scene = null
 var max_level = 2
 var coins_to_life = 20
 var time = 0
+var is_hardcore = false
 
 func get_seconds():
 	return fmod(time, 60)

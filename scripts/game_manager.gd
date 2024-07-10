@@ -23,6 +23,9 @@ func add_coin_number():
 
 func _on_ready():
 	transition.play("fade_in")
+	if !Global.is_hardcore:
+		player.position = PlayerVariables.get_checkpoint_position()
+	
 	mouse_position = get_viewport().get_mouse_position()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	SignalManager.player_died.connect(player_dead)

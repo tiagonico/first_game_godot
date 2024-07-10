@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cfd3b7ag7cd4d"]
+[gd_scene load_steps=58 format=3 uid="uid://cfd3b7ag7cd4d"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_xuq4i"]
 [ext_resource type="Texture2D" uid="uid://crfrmakne58gd" path="res://assets/sprites/world_tileset.png" id="2_8s3jo"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://qljgsi3knjey" path="res://scenes/seagull.tscn" id="13_tt6ce"]
 [ext_resource type="PackedScene" uid="uid://d3hgjj7rr0yym" path="res://scenes/crab.tscn" id="14_osd45"]
 [ext_resource type="PackedScene" uid="uid://38wbxmuh3u1t" path="res://scenes/level_goal.tscn" id="15_84x14"]
+[ext_resource type="PackedScene" uid="uid://bdmmc8tmnjqa8" path="res://scenes/checkpoint.tscn" id="20_r2d6p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_704rq"]
 texture = ExtResource("2_8s3jo")
@@ -1034,7 +1035,7 @@ position = Vector2(-1236, -709)
 position = Vector2(-1221, -709)
 
 [node name="Coin6" parent="Coins" instance=ExtResource("5_xegvp")]
-position = Vector2(93, -613)
+position = Vector2(93, -614)
 
 [node name="Coin7" parent="Coins" instance=ExtResource("5_xegvp")]
 position = Vector2(124, -614)
@@ -1700,6 +1701,9 @@ offset_top = -840.0
 offset_right = -630.0
 offset_bottom = -286.0
 color = Color(0, 0, 0, 1)
+
+[node name="Checkpoint" parent="." instance=ExtResource("20_r2d6p")]
+position = Vector2(2485, -616)
 
 [connection signal="coins_changed" from="GameManager" to="HUD" method="_on_coins_changed"]
 [connection signal="lifes_changed" from="GameManager" to="HUD" method="_on_lifes_changed"]

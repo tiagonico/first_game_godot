@@ -20,7 +20,6 @@ func _on_body_entered(_body):
 	timer.start()
 
 func _on_timer_timeout():
-	SignalManager.toggle_level_passed.emit()
 	transition.play("fade_out")
 	
 func _on_transition_animation_finished(anim_name):

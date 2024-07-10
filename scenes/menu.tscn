@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpavm8a5tvn4l"]
+[gd_scene load_steps=8 format=3 uid="uid://cpavm8a5tvn4l"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_k2rgp"]
 [ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_nay07"]
 [ext_resource type="Texture2D" uid="uid://c0lqlnfbx8v7a" path="res://assets/images/background.jpg" id="3_5bw51"]
+
+[sub_resource type="Theme" id="Theme_82tcq"]
 
 [sub_resource type="Animation" id="Animation_81qvi"]
 resource_name = "fade_in"
@@ -99,6 +101,43 @@ theme_override_fonts/font = ExtResource("1_nay07")
 theme_override_font_sizes/font_size = 32
 text = "EXIT"
 
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 367.0
+offset_top = 204.0
+offset_right = 927.0
+offset_bottom = 491.0
+theme = SubResource("Theme_82tcq")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 32.0
+offset_right = 542.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("1_nay07")
+theme_override_font_sizes/font_size = 32
+text = "SELECT DIFFICULTY"
+
+[node name="ButtonNormal" type="Button" parent="CanvasLayer/Panel"]
+offset_left = 138.0
+offset_top = 90.0
+offset_right = 407.0
+offset_bottom = 168.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_nay07")
+theme_override_font_sizes/font_size = 32
+text = "NORMAL"
+
+[node name="ButtonHardcore" type="Button" parent="CanvasLayer/Panel"]
+offset_left = 136.0
+offset_top = 184.0
+offset_right = 405.0
+offset_bottom = 262.0
+theme_override_colors/font_color = Color(0.891291, 4.18738e-06, 8.66354e-07, 1)
+theme_override_fonts/font = ExtResource("1_nay07")
+theme_override_font_sizes/font_size = 32
+text = "HARDCORE"
+
 [node name="Transition" type="AnimationPlayer" parent="CanvasLayer"]
 unique_name_in_owner = true
 root_node = NodePath("../..")
@@ -108,21 +147,24 @@ libraries = {
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Transition"]
 visible = false
-self_modulate = Color(1, 1, 1, 0)
 offset_left = -4.0
 offset_right = 1318.0
 offset_bottom = 727.0
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(653, 362)
-scale = Vector2(2.04068, 2.00833)
+position = Vector2(601, 337)
+scale = Vector2(1.86948, 1.87361)
 texture = ExtResource("3_5bw51")
 
 [connection signal="mouse_entered" from="CanvasLayer/ButtonPlay" to="." method="_on_button_play_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/ButtonPlay" to="." method="_on_button_play_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/ButtonSettings" to="." method="_on_button_play_mouse_entered"]
-[connection signal="pressed" from="CanvasLayer/ButtonSettings" to="." method="_on_button_play_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ButtonSettings" to="." method="_on_button_settings_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/ButtonQuit" to="." method="_on_button_quit_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Panel/ButtonNormal" to="." method="_on_button_normal_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Panel/ButtonNormal" to="." method="_on_button_normal_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Panel/ButtonHardcore" to="." method="_on_button_hardcore_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Panel/ButtonHardcore" to="." method="_on_button_hardcore_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/Transition" to="." method="_on_transition_animation_finished"]
