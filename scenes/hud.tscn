@@ -33,6 +33,20 @@ text = "x 0
 "
 vertical_alignment = 1
 
+[node name="LabelDifficulty" type="Label" parent="."]
+offset_left = 385.0
+offset_top = 7.0
+offset_right = 805.0
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(1, 0.984314, 0, 1)
+theme_override_fonts/font = ExtResource("1_ph7f4")
+theme_override_font_sizes/font_size = 32
+text = "
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SpriteHeart" type="Sprite2D" parent="."]
 position = Vector2(42, 39)
 scale = Vector2(0.2, 0.2)

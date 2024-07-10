@@ -114,14 +114,14 @@ func button_pressed(option):
 			press_button()
 
 func disable_main_buttons():
-	button_play.disabled = true
-	button_settings.disabled = true
-	button_quit.disabled = true
+	button_play.visible = false
+	button_settings.visible = false
+	button_quit.visible = false
 
 func enable_main_buttons():	
-	button_play.disabled = false
-	button_settings.disabled = false
-	button_quit.disabled = false
+	button_play.visible = true
+	button_settings.visible = true
+	button_quit.visible = true
 	
 func disable_panel_buttons():
 	button_normal.disabled = true

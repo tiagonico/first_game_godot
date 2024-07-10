@@ -3,10 +3,13 @@ extends CanvasLayer
 var is_paused = false
 var button_selected = 1
 var number_of_buttons = 2 
+var red = Color(1,0,0,1)
+var green = Color(0,1,0,1)
 
 @onready var label_seconds = $LabelSeconds
 @onready var label_minutes = $LabelMinutes
 @onready var label_hours = $LabelHours
+@onready var label_difficulty = $LabelDifficulty
 
 func _on_lifes_changed(amount):
 	get_node("LabelLife").text = "x " + str(amount)
@@ -16,19 +19,28 @@ func _on_coins_changed(amount):
 	
 func _on_ready():
 	get_node("ButtonResume").hide()
-	get_node("ButtonQuit").hide() 
+	get_node("ButtonQuit").hide()
+	label_difficulty.hide()
+	if Global.is_hardcore:
+		label_difficulty.text = "HARDCORE"
+		label_difficulty.set("theme_override_colors/font_color",red)
+	else:
+		label_difficulty.text = "NORMAL"
+		label_difficulty.set("theme_override_colors/font_color",green)
 
 func _on_toggle_menu():
 	if is_paused:
 		get_tree().paused = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Engine.time_scale=1
+		label_difficulty.hide()
 		get_node("ButtonResume").hide()
 		get_node("ButtonQuit").hide()
 	else:
 		get_tree().paused = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Engine.time_scale=0
+		label_difficulty.show()
 		get_node("ButtonResume").show()
 		get_node("ButtonQuit").show()
 		get_node("ButtonResume").grab_focus()
