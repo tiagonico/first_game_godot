@@ -31,7 +31,6 @@ theme_override_font_sizes/font_size = 32
 text = "x 0
 
 "
-vertical_alignment = 1
 
 [node name="LabelDifficulty" type="Label" parent="."]
 offset_left = 385.0
