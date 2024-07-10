@@ -978,6 +978,7 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="Transition"]
+z_index = 10
 offset_left = -710.0
 offset_top = -272.0
 offset_right = 29.0

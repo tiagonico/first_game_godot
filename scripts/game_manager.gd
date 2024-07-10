@@ -22,10 +22,10 @@ func add_coin_number():
 	coins_changed.emit(PlayerVariables.coins_number)
 
 func _on_ready():
-	transition.play("fade_in")
 	if !Global.is_hardcore:
 		player.position = PlayerVariables.get_checkpoint_position()
 	
+	transition.play("fade_in")
 	mouse_position = get_viewport().get_mouse_position()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	SignalManager.player_died.connect(player_dead)
@@ -43,10 +43,15 @@ func player_dead():
 		Engine.time_scale = 1
 	
 func _process(delta):
+	mouse_position = get_viewport().get_mouse_position()
+	
 	if !level_pass:
 		Global.time += delta
 		hud.change_time(Global.get_seconds(),Global.get_minutes(),Global.get_hours())
 	
+	if Input.is_action_just_pressed("fullscreen"):
+		Global.toggle_fullscreen()
+
 	if Input.is_action_just_pressed("pause"):
 		toggle_menu.emit()
 	if hud.is_paused:
@@ -55,7 +60,6 @@ func _process(delta):
 			
 		if mouse_position != get_viewport().get_mouse_position():
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		mouse_position = get_viewport().get_mouse_position()
 		
 		if Input.is_action_just_pressed("up"):
 			hud.button_pressed("up")
@@ -63,4 +67,3 @@ func _process(delta):
 			hud.button_pressed("down")
 		elif Input.is_action_just_pressed("jump"):
 			hud.button_pressed("select")
-			

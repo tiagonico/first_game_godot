@@ -9,10 +9,10 @@
 script = ExtResource("1_0sa2o")
 
 [node name="LabelLife" type="Label" parent="."]
-offset_left = 85.0
-offset_top = 23.0
-offset_right = 165.0
-offset_bottom = 55.0
+offset_left = 88.0
+offset_top = 24.0
+offset_right = 208.0
+offset_bottom = 56.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_ph7f4")
 theme_override_font_sizes/font_size = 32
@@ -21,10 +21,10 @@ text = "x 3
 vertical_alignment = 1
 
 [node name="LabelCoin" type="Label" parent="."]
-offset_left = 86.0
+offset_left = 88.0
 offset_top = 88.0
-offset_right = 181.0
-offset_bottom = 123.0
+offset_right = 200.0
+offset_bottom = 155.0
 theme_override_colors/font_color = Color(1, 0.984314, 0, 1)
 theme_override_fonts/font = ExtResource("1_ph7f4")
 theme_override_font_sizes/font_size = 32

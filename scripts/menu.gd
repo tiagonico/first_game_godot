@@ -26,6 +26,9 @@ func _process(_delta):
 	if Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		
+	if Input.is_action_just_pressed("fullscreen"):
+		Global.toggle_fullscreen()
+	
 	if mouse_position != get_viewport().get_mouse_position():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_position = get_viewport().get_mouse_position()

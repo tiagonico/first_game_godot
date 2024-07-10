@@ -4,5 +4,5 @@ func _on_ready():
 	if Global.is_hardcore:
 		visible = false
 		
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	PlayerVariables.checkpoint = 1
