@@ -3,6 +3,7 @@ extends Area2D
 @onready var timer = $Timer
 
 func _on_body_entered(_body):
+	print(_body)
 	Engine.time_scale = 0.5
 	SignalManager.player_died.emit()
 	timer.start()

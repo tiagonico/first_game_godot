@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
 var firstLoop = true
-const SPEED = 100.0
-const JUMP_VELOCITY = -280.0
+var SPEED = 100.0
+var JUMP_VELOCITY = -280.0
 var walk = 1
+var in_water = false
+
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var game_manager = %GameManager
 @onready var jump_audio = $JumpAudio
@@ -14,6 +16,24 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
 
+	if PlayerVariables.player_level == 3:
+		if position.y > 1243:
+			# Decrease velocity when hits the water
+			if !in_water:
+				velocity.y /= 10
+			in_water = true
+		else:
+			in_water = false
+
+		if in_water:
+			SPEED = 70
+			JUMP_VELOCITY = -100
+			gravity = 100
+		else:
+			SPEED = 100
+			JUMP_VELOCITY = -280
+			gravity = ProjectSettings.get_setting("physics/2d/default_gravity")		
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta

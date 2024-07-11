@@ -49,7 +49,6 @@ func player_dead():
 		Engine.time_scale = 1
 	
 func _process(delta):
-	mouse_position = get_viewport().get_mouse_position()
 	camera_2d.position_smoothing_enabled = true
 	
 	if !level_pass:
@@ -75,3 +74,5 @@ func _process(delta):
 			hud.button_pressed("down")
 		elif Input.is_action_just_pressed("jump"):
 			hud.button_pressed("select")
+			
+	mouse_position = get_viewport().get_mouse_position()

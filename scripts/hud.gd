@@ -16,7 +16,6 @@ var green = Color(0,1,0,1)
 @onready var menu_change = %MenuChange
 @onready var menu_back = %MenuBack
 @onready var music = %Music
-var music_position
 
 func _on_lifes_changed(amount):
 	get_node("LabelLife").text = "x " + str(amount)
@@ -38,7 +37,6 @@ func _on_ready():
 func _on_toggle_menu():
 	if is_paused:
 		sound_unpause.play()
-		#music.play(music_position)
 		music.stream_paused = false
 		get_tree().paused = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -48,7 +46,6 @@ func _on_toggle_menu():
 		get_node("ButtonQuit").hide()	
 	else:
 		sound_pause.play()
-		#music_position = music.get_playback_position()
 		music.stream_paused = true
 		get_tree().paused = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -99,10 +96,12 @@ func button_pressed(option):
 		press_button()
 
 func _on_button_resume_mouse_entered():
+	menu_change.play()
 	button_selected = 1
 	focus_button()
 
 func _on_button_quit_mouse_entered():
+	menu_change.play()
 	button_selected = 2
 	focus_button()
 	

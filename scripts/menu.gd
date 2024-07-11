@@ -26,6 +26,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	panel.visible = false
 	music.volume_db = -20
+	music.play(Global.music_time_menu)
 	focus_button()
 
 func _process(_delta):
@@ -48,7 +49,6 @@ func _process(_delta):
 			menu_change.play()
 		elif Input.is_action_just_pressed("jump"):
 			button_pressed("select")
-			menu_choose.play()
 		elif Input.is_action_just_pressed("pause") or Input.is_action_just_pressed("walk"):
 			button_pressed("back")
 
@@ -142,26 +142,31 @@ func disable_panel_buttons():
 
 func _on_button_play_mouse_entered():
 	if !panel.visible:
+		menu_change.play()
 		button_selected = 1
 		focus_button()
 	
 func _on_button_settings_mouse_entered():
 	if !panel.visible:
+		menu_change.play()
 		button_selected = 2
 		focus_button()
 	
 func _on_button_quit_mouse_entered():
 	if !panel.visible:
+		menu_change.play()
 		button_selected = 3
 		focus_button()
 	
 func _on_button_normal_mouse_entered():
 	if !locked:
+		menu_change.play()
 		panel_button_selected = 1
 		focus_button_panel()
 	
 func _on_button_hardcore_mouse_entered():
 	if !locked:
+		menu_change.play()
 		panel_button_selected = 2
 		focus_button_panel()
 
@@ -171,6 +176,7 @@ func _on_transition_animation_finished(_anim_name):
 	Global.go_to_current_level_loading()
 	
 func _on_button_play_pressed():
+	menu_choose.play()
 	panel.visible = true
 	disable_main_buttons()
 	release_focus_all()
@@ -180,14 +186,16 @@ func _on_button_quit_pressed():
 	get_tree().quit()
 
 func _on_button_settings_pressed():
-	pass # Replace with function body.
+	menu_choose.play()
 	
 func _on_button_normal_pressed():
 	locked = true
+	menu_choose.play()
 	Global.is_hardcore = false
 	transition.play("fade_out")
 
 func _on_button_hardcore_pressed():
 	locked = true
+	menu_choose.play()
 	Global.is_hardcore = true
 	transition.play("fade_out")
