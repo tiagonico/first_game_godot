@@ -3,6 +3,7 @@ extends Node
 @onready var player = %Player
 @onready var transition = %Transition
 @onready var hud = %HUD
+@onready var camera_2d = $"../Player/Camera2D"
 
 var is_dead = false
 var level_pass = false
@@ -23,6 +24,7 @@ func add_coin_number():
 
 func _on_ready():
 	if !Global.is_hardcore:
+		camera_2d.position_smoothing_enabled = false
 		player.position = PlayerVariables.get_checkpoint_position()
 	
 	transition.play("fade_in")
@@ -44,6 +46,7 @@ func player_dead():
 	
 func _process(delta):
 	mouse_position = get_viewport().get_mouse_position()
+	camera_2d.position_smoothing_enabled = true
 	
 	if !level_pass:
 		Global.time += delta
@@ -54,6 +57,7 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("pause"):
 		toggle_menu.emit()
+		
 	if hud.is_paused:
 		if Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

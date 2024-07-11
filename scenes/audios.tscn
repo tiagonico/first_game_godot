@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://brwtjmttgqsf6"]
+
+[ext_resource type="AudioStream" uid="uid://cwd0s8iyell16" path="res://assets/sounds/pause.mp3" id="1_a8g57"]
+[ext_resource type="Script" path="res://scripts/audios.gd" id="1_doqko"]
+[ext_resource type="AudioStream" uid="uid://cpaodkm0cn86j" path="res://assets/sounds/unpause.mp3" id="2_7yxhe"]
+
+[node name="Audios" type="Node2D"]
+script = ExtResource("1_doqko")
+
+[node name="SoundPause" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_a8g57")
+
+[node name="SoundUnpause" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7yxhe")

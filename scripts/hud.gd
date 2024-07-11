@@ -11,6 +11,13 @@ var green = Color(0,1,0,1)
 @onready var label_hours = $LabelHours
 @onready var label_difficulty = $LabelDifficulty
 
+@onready var sound_pause = %SoundPause
+@onready var sound_unpause = %SoundUnpause
+@onready var menu_change = %MenuChange
+@onready var menu_back = %MenuBack
+@onready var music = %Music
+var music_position
+
 func _on_lifes_changed(amount):
 	get_node("LabelLife").text = "x " + str(amount)
 
@@ -30,22 +37,27 @@ func _on_ready():
 
 func _on_toggle_menu():
 	if is_paused:
+		sound_unpause.play()
+		music.play(music_position)
 		get_tree().paused = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Engine.time_scale=1
 		label_difficulty.hide()
 		get_node("ButtonResume").hide()
-		get_node("ButtonQuit").hide()
+		get_node("ButtonQuit").hide()	
 	else:
-		get_tree().paused = true
+		sound_pause.play()
+		music_position = music.get_playback_position()
+		music.stop()
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Engine.time_scale=0
 		label_difficulty.show()
 		get_node("ButtonResume").show()
 		get_node("ButtonQuit").show()
 		get_node("ButtonResume").grab_focus()
+
 	is_paused = !is_paused
-		
+	
 func _on_button_resume_pressed():
 	_on_toggle_menu() 
 
@@ -53,7 +65,7 @@ func _on_button_quit_pressed():
 	_on_toggle_menu()
 	PlayerVariables.reset_variables()
 	Global.go_to_main_menu()
-
+	
 func focus_button():
 	if button_selected == 1:
 		get_node("ButtonResume").grab_focus()
@@ -70,11 +82,13 @@ func press_button():
 		
 func button_pressed(option):
 	if option == "up":
+		menu_change.play()
 		button_selected-=1
 		if button_selected == 0:
 			button_selected = number_of_buttons	
 		focus_button()
 	elif option == "down":
+		menu_change.play()
 		button_selected+=1
 		if button_selected > number_of_buttons:
 			button_selected = 1

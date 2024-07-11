@@ -1,10 +1,11 @@
 extends Node
 
 var current_scene = null
-var max_level = 2
+var max_level = 3
 var coins_to_life = 20
 var time = 0
 var is_hardcore = false
+var after_loading_scene
 
 func get_seconds():
 	return fmod(time, 60)
@@ -40,8 +41,26 @@ func go_to_next_level():
 		PlayerVariables.reset_variables()
 		go_to_main_menu()
 		
+func go_to_next_level_loading():
+	var next_level = PlayerVariables.player_level + 1
+	if next_level <= max_level:
+		PlayerVariables.player_level += 1
+		after_loading_scene = "res://scenes/level_"+str(next_level)+".tscn"
+		goto_scene("res://scenes/loading.tscn")
+	else:
+		PlayerVariables.reset_variables()
+		after_loading_scene = "res://scenes/menu.tscn"
+		goto_scene("res://scenes/loading.tscn")
+		
+func go_to_current_level_loading():
+	after_loading_scene = "res://scenes/level_"+str(PlayerVariables.player_level)+".tscn"
+	goto_scene("res://scenes/loading.tscn")
+	
 func go_to_current_level():
-	goto_scene("res://scenes/level_"+str(PlayerVariables.player_level)+".tscn")
+	goto_scene("res://scenes/level_"+str(PlayerVariables.player_level)+".tscn")	
+	
+func go_to_after_loading():
+	goto_scene(after_loading_scene)
 	
 func go_to_main_menu():
 	goto_scene("res://scenes/menu.tscn")

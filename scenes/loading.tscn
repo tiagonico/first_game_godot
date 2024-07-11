@@ -1,0 +1,160 @@
+[gd_scene load_steps=21 format=3 uid="uid://xftp0rwie4s0"]
+
+[ext_resource type="Script" path="res://scripts/loading.gd" id="1_4ogie"]
+[ext_resource type="Texture2D" uid="uid://dnuv0vecpqkko" path="res://assets/sprites/knight.png" id="1_hr214"]
+[ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_mtodn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urx3n"]
+atlas = ExtResource("1_hr214")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x71q3"]
+atlas = ExtResource("1_hr214")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n8c7"]
+atlas = ExtResource("1_hr214")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y78fg"]
+atlas = ExtResource("1_hr214")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0gst"]
+atlas = ExtResource("1_hr214")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_labun"]
+atlas = ExtResource("1_hr214")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1osi"]
+atlas = ExtResource("1_hr214")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pakfs"]
+atlas = ExtResource("1_hr214")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56miw"]
+atlas = ExtResource("1_hr214")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxdkv"]
+atlas = ExtResource("1_hr214")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh1o1"]
+atlas = ExtResource("1_hr214")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh8qy"]
+atlas = ExtResource("1_hr214")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a1nv"]
+atlas = ExtResource("1_hr214")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npwy7"]
+atlas = ExtResource("1_hr214")
+region = Rect2(160, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4vxs"]
+atlas = ExtResource("1_hr214")
+region = Rect2(192, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5engs"]
+atlas = ExtResource("1_hr214")
+region = Rect2(224, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj1p1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urx3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x71q3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n8c7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y78fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0gst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_labun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1osi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pakfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56miw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxdkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rh1o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh8qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a1nv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npwy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4vxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5engs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Loading" type="Node2D"]
+script = ExtResource("1_4ogie")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -11.0
+offset_top = -38.0
+offset_right = 1229.0
+offset_bottom = 708.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(589, 331)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_uj1p1")
+autoplay = "default"
+frame_progress = 0.486096
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+wait_time = 2.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 368.0
+offset_top = 147.0
+offset_right = 944.0
+offset_bottom = 236.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_mtodn")
+theme_override_font_sizes/font_size = 64
+text = "LOADING"
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]

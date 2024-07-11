@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpavm8a5tvn4l"]
+[gd_scene load_steps=15 format=3 uid="uid://cpavm8a5tvn4l"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_k2rgp"]
 [ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_nay07"]
 [ext_resource type="Texture2D" uid="uid://c0lqlnfbx8v7a" path="res://assets/images/background.jpg" id="3_5bw51"]
+[ext_resource type="AudioStream" uid="uid://dn77trlbs50cx" path="res://assets/sounds/menu_change.wav" id="3_dr0m7"]
+[ext_resource type="AudioStream" uid="uid://e4svsbxonyqb" path="res://assets/sounds/menu_choose.mp3" id="4_k3myx"]
 [ext_resource type="Texture2D" uid="uid://clsyu7vnk3po0" path="res://assets/sprites/title.png" id="4_yhvae"]
+[ext_resource type="AudioStream" uid="uid://ebh84mybmpni" path="res://assets/sounds/negative.wav" id="5_2805a"]
+[ext_resource type="AudioStream" uid="uid://difl6ynph75w7" path="res://assets/music/menu.mp3" id="6_rd8o5"]
 
 [sub_resource type="Theme" id="Theme_82tcq"]
 
@@ -431,6 +435,20 @@ offset_left = -4.0
 offset_right = 1318.0
 offset_bottom = 727.0
 color = Color(0, 0, 0, 1)
+
+[node name="MenuChange" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+stream = ExtResource("3_dr0m7")
+
+[node name="MenuChoose" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+stream = ExtResource("4_k3myx")
+
+[node name="MenuBack" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+stream = ExtResource("5_2805a")
+
+[node name="Music" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource("6_rd8o5")
+volume_db = -20.0
+autoplay = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(601, 337)

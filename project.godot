@@ -22,6 +22,7 @@ config/windows_native_icon="res://The Peaceful Knight.ico"
 Global="*res://scripts/global.gd"
 PlayerVariables="*res://scripts/player_variables.gd"
 SignalManager="*res://scripts/signal_manager.gd"
+Audios="*res://scenes/audios.tscn"
 
 [display]
 

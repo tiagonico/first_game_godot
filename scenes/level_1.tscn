@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dygpqb2r1jccc"]
+[gd_scene load_steps=35 format=3 uid="uid://dygpqb2r1jccc"]
 
 [ext_resource type="PackedScene" uid="uid://dx5m7q7ffh3i6" path="res://scenes/player.tscn" id="1_bkffy"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_ixgyh"]
@@ -9,12 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://bpnu2ti7oedfr" path="res://scenes/coin.tscn" id="4_by0wk"]
 [ext_resource type="PackedScene" uid="uid://c5fe7mvbpn53j" path="res://scenes/killzone.tscn" id="5_j675o"]
 [ext_resource type="PackedScene" uid="uid://jrkg4hn34r06" path="res://scenes/slime.tscn" id="6_8ljmn"]
-[ext_resource type="PackedScene" uid="uid://bniaiwot55ay1" path="res://scenes/music.tscn" id="6_hxqph"]
 [ext_resource type="FontFile" uid="uid://dmf2to8tkpk5i" path="res://assets/fonts/PixelOperator8.ttf" id="7_lmtjk"]
 [ext_resource type="PackedScene" uid="uid://bcmdxblly1hyc" path="res://scenes/tip.tscn" id="8_wdg16"]
 [ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="9_p40as"]
 [ext_resource type="PackedScene" uid="uid://bfn0sui81vwg" path="res://scenes/hud.tscn" id="11_lobki"]
 [ext_resource type="PackedScene" uid="uid://38wbxmuh3u1t" path="res://scenes/level_goal.tscn" id="12_sug6x"]
+[ext_resource type="AudioStream" uid="uid://cwd0s8iyell16" path="res://assets/sounds/pause.mp3" id="14_6lav5"]
+[ext_resource type="AudioStream" uid="uid://cpaodkm0cn86j" path="res://assets/sounds/unpause.mp3" id="15_s81nb"]
+[ext_resource type="AudioStream" uid="uid://nst4r15ax8qu" path="res://assets/music/time_for_adventure.mp3" id="17_stq6n"]
+[ext_resource type="AudioStream" uid="uid://dn77trlbs50cx" path="res://assets/sounds/menu_change.wav" id="18_emdnq"]
+[ext_resource type="AudioStream" uid="uid://ebh84mybmpni" path="res://assets/sounds/negative.wav" id="19_vws1c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_704rq"]
 texture = ExtResource("2_jawax")
@@ -629,8 +633,6 @@ position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
 
-[node name="Music" parent="Player" instance=ExtResource("6_hxqph")]
-
 [node name="Killzone" parent="." instance=ExtResource("5_j675o")]
 position = Vector2(32, 69)
 
@@ -984,6 +986,41 @@ offset_top = -272.0
 offset_right = 29.0
 offset_bottom = 282.0
 color = Color(0, 0, 0, 1)
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="SoundPause" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("14_6lav5")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SoundUnpause" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("15_s81nb")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+process_mode = 1
+stream = ExtResource("17_stq6n")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
+[node name="MenuChange" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("18_emdnq")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="MenuBack" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("19_vws1c")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="button_pressed" from="GameManager" to="HUD" method="_on_game_manager_button_pressed"]
 [connection signal="coins_changed" from="GameManager" to="HUD" method="_on_coins_changed"]

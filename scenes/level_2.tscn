@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cfd3b7ag7cd4d"]
+[gd_scene load_steps=62 format=3 uid="uid://cfd3b7ag7cd4d"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_xuq4i"]
 [ext_resource type="Texture2D" uid="uid://crfrmakne58gd" path="res://assets/sprites/world_tileset.png" id="2_8s3jo"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://c5fe7mvbpn53j" path="res://scenes/killzone.tscn" id="4_joq8a"]
 [ext_resource type="Texture2D" uid="uid://dbklevqqbo1ml" path="res://assets/sprites/cacto.png" id="5_cmeu6"]
 [ext_resource type="PackedScene" uid="uid://bpnu2ti7oedfr" path="res://scenes/coin.tscn" id="5_xegvp"]
-[ext_resource type="PackedScene" uid="uid://bniaiwot55ay1" path="res://scenes/music.tscn" id="6_nfn0f"]
 [ext_resource type="FontFile" uid="uid://dmf2to8tkpk5i" path="res://assets/fonts/PixelOperator8.ttf" id="8_bf6na"]
 [ext_resource type="PackedScene" uid="uid://bcmdxblly1hyc" path="res://scenes/tip.tscn" id="9_hai03"]
 [ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="10_ol3ow"]
@@ -21,6 +20,11 @@
 [ext_resource type="PackedScene" uid="uid://d3hgjj7rr0yym" path="res://scenes/crab.tscn" id="14_osd45"]
 [ext_resource type="PackedScene" uid="uid://38wbxmuh3u1t" path="res://scenes/level_goal.tscn" id="15_84x14"]
 [ext_resource type="PackedScene" uid="uid://bdmmc8tmnjqa8" path="res://scenes/checkpoint.tscn" id="20_r2d6p"]
+[ext_resource type="AudioStream" uid="uid://cwd0s8iyell16" path="res://assets/sounds/pause.mp3" id="22_dvn48"]
+[ext_resource type="AudioStream" uid="uid://cpaodkm0cn86j" path="res://assets/sounds/unpause.mp3" id="23_exkjb"]
+[ext_resource type="AudioStream" uid="uid://nst4r15ax8qu" path="res://assets/music/time_for_adventure.mp3" id="24_fldse"]
+[ext_resource type="AudioStream" uid="uid://dn77trlbs50cx" path="res://assets/sounds/menu_change.wav" id="25_ho3rg"]
+[ext_resource type="AudioStream" uid="uid://ebh84mybmpni" path="res://assets/sounds/negative.wav" id="26_d6rlr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_704rq"]
 texture = ExtResource("2_8s3jo")
@@ -1008,8 +1012,6 @@ position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
 
-[node name="Music" parent="Player" instance=ExtResource("6_nfn0f")]
-
 [node name="Killzone" parent="." instance=ExtResource("4_joq8a")]
 position = Vector2(-710, -488)
 
@@ -1704,6 +1706,41 @@ color = Color(0, 0, 0, 1)
 
 [node name="Checkpoint" parent="." instance=ExtResource("20_r2d6p")]
 position = Vector2(2485, -616)
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="SoundPause" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("22_dvn48")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SoundUnpause" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("23_exkjb")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+process_mode = 1
+stream = ExtResource("24_fldse")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
+[node name="MenuChange" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("25_ho3rg")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="MenuBack" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("26_d6rlr")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="coins_changed" from="GameManager" to="HUD" method="_on_coins_changed"]
 [connection signal="lifes_changed" from="GameManager" to="HUD" method="_on_lifes_changed"]

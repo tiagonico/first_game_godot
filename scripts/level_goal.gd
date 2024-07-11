@@ -6,6 +6,7 @@ extends Node2D
 @onready var label = $Label
 @onready var transition = %Transition
 @onready var player = %Player
+@onready var music = %Music
 
 const red = Color(1,0,0,1)
 const yellow = Color(1,1,0,1)
@@ -14,7 +15,7 @@ var aux = 0
 func _on_body_entered(_body):
 	SignalManager.toggle_level_passed.emit()
 	label.show()
-	player.get_node("Music").stop()
+	music.stop()
 	pass_level_sound.play()
 	timer_text.start()
 	timer.start()

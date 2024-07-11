@@ -16,6 +16,10 @@ var locked = false
 @onready var button_normal = $CanvasLayer/Panel/ButtonNormal
 @onready var button_hardcore = $CanvasLayer/Panel/ButtonHardcore
 
+@onready var menu_change = $CanvasLayer/MenuChange
+@onready var menu_choose = $CanvasLayer/MenuChoose
+@onready var menu_back = $CanvasLayer/MenuBack
+
 func _ready():
 	mouse_position = get_viewport().get_mouse_position()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -36,10 +40,13 @@ func _process(_delta):
 	if !locked:
 		if Input.is_action_just_pressed("up"):
 			button_pressed("up")
+			menu_change.play()
 		elif Input.is_action_just_pressed("down"):
 			button_pressed("down")
+			menu_change.play()
 		elif Input.is_action_just_pressed("jump"):
 			button_pressed("select")
+			menu_choose.play()
 		elif Input.is_action_just_pressed("pause") or Input.is_action_just_pressed("walk"):
 			button_pressed("back")
 
@@ -110,6 +117,7 @@ func button_pressed(option):
 				panel_button_selected = 1
 			focus_button_panel()
 		elif option == "back":
+			menu_back.play()
 			panel.visible = false
 			enable_main_buttons()
 			focus_button()	
@@ -158,7 +166,7 @@ func _on_button_hardcore_mouse_entered():
 func _on_transition_animation_finished(_anim_name):
 	PlayerVariables.reset_variables()
 	Global.reset_time()
-	Global.go_to_current_level()
+	Global.go_to_current_level_loading()
 	
 func _on_button_play_pressed():
 	panel.visible = true
