@@ -6,22 +6,24 @@ var JUMP_VELOCITY = -280.0
 var walk = 1
 var in_water = false
 var last_velocity_y = 0
+var fall_velocity_kill = 600
+var water_position_y = 1243
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var game_manager = %GameManager
 @onready var jump_audio = $JumpAudio
 @onready var death_audio = $DeathAudio
+@onready var killzone = $"../Killzone"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
-	if velocity.y == 0 and last_velocity_y > 0:
-		print(velocity.y)
-
+	if velocity.y == 0 and last_velocity_y > fall_velocity_kill:
+		killzone._on_body_entered(self)
 
 	if PlayerVariables.player_level == 3:
-		if position.y > 1243:
+		if position.y > water_position_y:
 			# Decrease velocity when hits the water
 			if !in_water:
 				velocity.y /= 10

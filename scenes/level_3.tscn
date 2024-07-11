@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cnc3g6jamxrrt"]
+[gd_scene load_steps=31 format=3 uid="uid://cnc3g6jamxrrt"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_5taoh"]
 [ext_resource type="Texture2D" uid="uid://crfrmakne58gd" path="res://assets/sprites/world_tileset.png" id="2_1vuv1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dbklevqqbo1ml" path="res://assets/sprites/cacto.png" id="5_bvspj"]
 [ext_resource type="Texture2D" uid="uid://bt2pm1hpdfpf4" path="res://assets/sprites/waves.png" id="6_sfxrh"]
 [ext_resource type="PackedScene" uid="uid://dx5m7q7ffh3i6" path="res://scenes/player.tscn" id="7_no4ay"]
+[ext_resource type="PackedScene" uid="uid://c5fe7mvbpn53j" path="res://scenes/killzone.tscn" id="8_xc0uy"]
 [ext_resource type="PackedScene" uid="uid://bpnu2ti7oedfr" path="res://scenes/coin.tscn" id="9_c5jk6"]
 [ext_resource type="FontFile" uid="uid://dmf2to8tkpk5i" path="res://assets/fonts/PixelOperator8.ttf" id="15_slyok"]
 [ext_resource type="PackedScene" uid="uid://bcmdxblly1hyc" path="res://scenes/tip.tscn" id="16_n82qi"]
@@ -505,6 +506,8 @@ sources/10 = SubResource("TileSetAtlasSource_racap")
 sources/1 = SubResource("TileSetAtlasSource_ce2ob")
 sources/3 = SubResource("TileSetAtlasSource_anyu5")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7pq0q"]
+
 [sub_resource type="Animation" id="Animation_elslq"]
 resource_name = "fade_in"
 tracks/0/type = "value"
@@ -592,6 +595,13 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
+
+[node name="Killzone" parent="." instance=ExtResource("8_xc0uy")]
+position = Vector2(-348, 2544)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-32, 8)
+shape = SubResource("WorldBoundaryShape2D_7pq0q")
 
 [node name="Coins" type="Node" parent="."]
 
