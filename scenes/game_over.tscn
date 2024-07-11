@@ -1,0 +1,142 @@
+[gd_scene load_steps=13 format=3 uid="uid://brknn01402ntc"]
+
+[ext_resource type="Texture2D" uid="uid://dnuv0vecpqkko" path="res://assets/sprites/knight.png" id="1_fgyph"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_ut82o"]
+[ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_smoai"]
+[ext_resource type="AudioStream" uid="uid://bmxwdd5xnake8" path="res://assets/sounds/game_over.wav" id="4_mbeu6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpcua"]
+atlas = ExtResource("1_fgyph")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie2oe"]
+atlas = ExtResource("1_fgyph")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otx81"]
+atlas = ExtResource("1_fgyph")
+region = Rect2(224, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utfw8"]
+atlas = ExtResource("1_fgyph")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kcig"]
+atlas = ExtResource("1_fgyph")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vta1b"]
+atlas = ExtResource("1_fgyph")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yokn"]
+atlas = ExtResource("1_fgyph")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7pjea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpcua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie2oe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otx81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utfw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kcig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vta1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yokn")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 2.0
+}]
+
+[node name="Game Over" type="Node2D"]
+script = ExtResource("1_ut82o")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -11.0
+offset_top = -38.0
+offset_right = 1229.0
+offset_bottom = 708.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(589, 331)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_7pjea")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame = 6
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+wait_time = 8.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 329.0
+offset_top = 144.0
+offset_right = 905.0
+offset_bottom = 233.0
+theme_override_colors/font_color = Color(1, 0.0196078, 0.0823529, 1)
+theme_override_fonts/font = ExtResource("2_smoai")
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+
+[node name="MaxLevel" type="Label" parent="CanvasLayer"]
+offset_left = 370.0
+offset_top = 555.0
+offset_right = 472.0
+offset_bottom = 611.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_smoai")
+theme_override_font_sizes/font_size = 48
+text = "1"
+
+[node name="MaxLevel2" type="Label" parent="CanvasLayer"]
+offset_left = 97.0
+offset_top = 558.0
+offset_right = 473.0
+offset_bottom = 614.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_smoai")
+theme_override_font_sizes/font_size = 48
+text = "Level"
+
+[node name="Time" type="Label" parent="CanvasLayer"]
+offset_left = 919.0
+offset_top = 561.0
+offset_right = 1295.0
+offset_bottom = 617.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_smoai")
+theme_override_font_sizes/font_size = 48
+text = "00:00"
+
+[node name="Time2" type="Label" parent="CanvasLayer"]
+offset_left = 697.0
+offset_top = 560.0
+offset_right = 1073.0
+offset_bottom = 616.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_smoai")
+theme_override_font_sizes/font_size = 48
+text = "Time"
+
+[node name="GameOver" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource("4_mbeu6")
+
+[connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]

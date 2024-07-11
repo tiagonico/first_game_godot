@@ -65,6 +65,9 @@ func go_to_current_level():
 func go_to_after_loading():
 	goto_scene(after_loading_scene)
 	
+func go_to_game_over():
+	goto_scene("res://scenes/game_over.tscn")
+	
 func go_to_main_menu():
 	goto_scene("res://scenes/menu.tscn")
 	

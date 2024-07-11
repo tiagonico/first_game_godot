@@ -5,6 +5,7 @@ var SPEED = 100.0
 var JUMP_VELOCITY = -280.0
 var walk = 1
 var in_water = false
+var last_velocity_y = 0
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var game_manager = %GameManager
@@ -15,6 +16,9 @@ var in_water = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
+	if velocity.y == 0 and last_velocity_y > 0:
+		print(velocity.y)
+
 
 	if PlayerVariables.player_level == 3:
 		if position.y > 1243:
@@ -87,5 +91,6 @@ func _physics_process(delta):
 				animated_sprite_2d.play("walk")
 			else: 
 				animated_sprite_2d.play("run")
-
+	
+	last_velocity_y = velocity.y
 	move_and_slide()

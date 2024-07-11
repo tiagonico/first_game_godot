@@ -15,6 +15,6 @@ func _on_timer_timeout():
 	else:
 		PlayerVariables.reset_variables(false)
 		if Global.is_hardcore:
-			Global.go_to_main_menu()
+			Global.go_to_game_over()
 		else:
 			Global.go_to_current_level()

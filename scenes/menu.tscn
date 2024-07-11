@@ -362,9 +362,9 @@ script = ExtResource("1_k2rgp")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ButtonPlay" type="Button" parent="CanvasLayer"]
-offset_left = 503.0
+offset_left = 467.0
 offset_top = 391.0
-offset_right = 772.0
+offset_right = 736.0
 offset_bottom = 469.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_nay07")
@@ -372,9 +372,9 @@ theme_override_font_sizes/font_size = 32
 text = "PLAY"
 
 [node name="ButtonSettings" type="Button" parent="CanvasLayer"]
-offset_left = 503.0
+offset_left = 467.0
 offset_top = 479.0
-offset_right = 772.0
+offset_right = 736.0
 offset_bottom = 557.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_nay07")
@@ -382,9 +382,9 @@ theme_override_font_sizes/font_size = 32
 text = "SETTINGS"
 
 [node name="ButtonQuit" type="Button" parent="CanvasLayer"]
-offset_left = 504.0
+offset_left = 468.0
 offset_top = 566.0
-offset_right = 773.0
+offset_right = 737.0
 offset_bottom = 644.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_nay07")
@@ -392,9 +392,9 @@ theme_override_font_sizes/font_size = 32
 text = "EXIT"
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = 367.0
+offset_left = 331.0
 offset_top = 204.0
-offset_right = 927.0
+offset_right = 891.0
 offset_bottom = 491.0
 theme = SubResource("Theme_82tcq")
 
@@ -451,6 +451,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="MenuChange" type="AudioStreamPlayer2D" parent="CanvasLayer"]
 stream = ExtResource("3_dr0m7")
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="MenuChoose" type="AudioStreamPlayer2D" parent="CanvasLayer"]

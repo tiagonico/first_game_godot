@@ -9,6 +9,7 @@ extends Node
 var is_dead = false
 var level_pass = false
 var mouse_position
+var last_velocity_y = 0
 
 signal lifes_changed
 signal coins_changed
@@ -49,7 +50,7 @@ func player_dead():
 		Engine.time_scale = 1
 	
 func _process(delta):
-	camera_2d.position_smoothing_enabled = true
+	camera_2d.position_smoothing_enabled = true		
 	
 	if !level_pass:
 		Global.time += delta
