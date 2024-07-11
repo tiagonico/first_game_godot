@@ -38,7 +38,8 @@ func _on_ready():
 func _on_toggle_menu():
 	if is_paused:
 		sound_unpause.play()
-		music.play(music_position)
+		#music.play(music_position)
+		music.stream_paused = false
 		get_tree().paused = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Engine.time_scale=1
@@ -47,8 +48,9 @@ func _on_toggle_menu():
 		get_node("ButtonQuit").hide()	
 	else:
 		sound_pause.play()
-		music_position = music.get_playback_position()
-		music.stop()
+		#music_position = music.get_playback_position()
+		music.stream_paused = true
+		get_tree().paused = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Engine.time_scale=0
 		label_difficulty.show()
@@ -63,7 +65,7 @@ func _on_button_resume_pressed():
 
 func _on_button_quit_pressed():
 	_on_toggle_menu()
-	PlayerVariables.reset_variables()
+	PlayerVariables.reset_variables(true)
 	Global.go_to_main_menu()
 	
 func focus_button():

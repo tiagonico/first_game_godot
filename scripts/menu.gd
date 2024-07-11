@@ -19,11 +19,13 @@ var locked = false
 @onready var menu_change = $CanvasLayer/MenuChange
 @onready var menu_choose = $CanvasLayer/MenuChoose
 @onready var menu_back = $CanvasLayer/MenuBack
+@onready var music = $CanvasLayer/Music
 
 func _ready():
 	mouse_position = get_viewport().get_mouse_position()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	panel.visible = false
+	music.volume_db = -20
 	focus_button()
 
 func _process(_delta):
@@ -164,7 +166,7 @@ func _on_button_hardcore_mouse_entered():
 		focus_button_panel()
 
 func _on_transition_animation_finished(_anim_name):
-	PlayerVariables.reset_variables()
+	PlayerVariables.reset_variables(false)
 	Global.reset_time()
 	Global.go_to_current_level_loading()
 	

@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bdmmc8tmnjqa8" path="res://scenes/checkpoint.tscn" id="20_r2d6p"]
 [ext_resource type="AudioStream" uid="uid://cwd0s8iyell16" path="res://assets/sounds/pause.mp3" id="22_dvn48"]
 [ext_resource type="AudioStream" uid="uid://cpaodkm0cn86j" path="res://assets/sounds/unpause.mp3" id="23_exkjb"]
-[ext_resource type="AudioStream" uid="uid://nst4r15ax8qu" path="res://assets/music/time_for_adventure.mp3" id="24_fldse"]
+[ext_resource type="AudioStream" uid="uid://cvsfbsxd3xjmg" path="res://assets/music/lvl_2.mp3" id="23_yjdle"]
 [ext_resource type="AudioStream" uid="uid://dn77trlbs50cx" path="res://assets/sounds/menu_change.wav" id="25_ho3rg"]
 [ext_resource type="AudioStream" uid="uid://ebh84mybmpni" path="res://assets/sounds/negative.wav" id="26_d6rlr"]
 
@@ -1725,8 +1725,8 @@ bus = &"SFX"
 [node name="Music" type="AudioStreamPlayer" parent="Sounds"]
 unique_name_in_owner = true
 process_mode = 1
-stream = ExtResource("24_fldse")
-volume_db = -20.0
+stream = ExtResource("23_yjdle")
+volume_db = -10.0
 autoplay = true
 bus = &"Music"
 

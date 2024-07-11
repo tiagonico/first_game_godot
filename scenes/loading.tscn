@@ -141,7 +141,7 @@ position = Vector2(589, 331)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_uj1p1")
 autoplay = "default"
-frame_progress = 0.486096
+frame_progress = 0.843538
 
 [node name="Timer" type="Timer" parent="CanvasLayer"]
 wait_time = 2.0

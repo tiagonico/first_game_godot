@@ -12,12 +12,12 @@
 [ext_resource type="FontFile" uid="uid://dmf2to8tkpk5i" path="res://assets/fonts/PixelOperator8.ttf" id="15_slyok"]
 [ext_resource type="PackedScene" uid="uid://bcmdxblly1hyc" path="res://scenes/tip.tscn" id="16_n82qi"]
 [ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="17_gjoju"]
+[ext_resource type="AudioStream" uid="uid://cvsfbsxd3xjmg" path="res://assets/music/lvl_2.mp3" id="18_3kpfr"]
 [ext_resource type="PackedScene" uid="uid://bfn0sui81vwg" path="res://scenes/hud.tscn" id="18_fwjex"]
 [ext_resource type="PackedScene" uid="uid://38wbxmuh3u1t" path="res://scenes/level_goal.tscn" id="19_b2gxc"]
 [ext_resource type="PackedScene" uid="uid://bdmmc8tmnjqa8" path="res://scenes/checkpoint.tscn" id="20_bgsin"]
 [ext_resource type="AudioStream" uid="uid://cwd0s8iyell16" path="res://assets/sounds/pause.mp3" id="21_igtps"]
 [ext_resource type="AudioStream" uid="uid://cpaodkm0cn86j" path="res://assets/sounds/unpause.mp3" id="22_q4kc7"]
-[ext_resource type="AudioStream" uid="uid://nst4r15ax8qu" path="res://assets/music/time_for_adventure.mp3" id="23_lqjkl"]
 [ext_resource type="AudioStream" uid="uid://dn77trlbs50cx" path="res://assets/sounds/menu_change.wav" id="24_m4iq4"]
 [ext_resource type="AudioStream" uid="uid://ebh84mybmpni" path="res://assets/sounds/negative.wav" id="25_ayjpr"]
 
@@ -568,7 +568,7 @@ _data = {
 "fade_out": SubResource("Animation_bugug")
 }
 
-[node name="Level 2" type="Node2D"]
+[node name="Level 3" type="Node2D"]
 process_mode = 1
 
 [node name="GameManager" type="Node" parent="."]
@@ -685,7 +685,7 @@ bus = &"SFX"
 [node name="Music" type="AudioStreamPlayer" parent="Sounds"]
 unique_name_in_owner = true
 process_mode = 1
-stream = ExtResource("23_lqjkl")
+stream = ExtResource("18_3kpfr")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"

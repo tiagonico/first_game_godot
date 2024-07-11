@@ -4,6 +4,7 @@ extends Node
 @onready var transition = %Transition
 @onready var hud = %HUD
 @onready var camera_2d = $"../Player/Camera2D"
+@onready var music = %Music
 
 var is_dead = false
 var level_pass = false
@@ -27,6 +28,7 @@ func _on_ready():
 		camera_2d.position_smoothing_enabled = false
 		player.position = PlayerVariables.get_checkpoint_position()
 	
+	music.play(Global.music_time_on_kill)
 	transition.play("fade_in")
 	mouse_position = get_viewport().get_mouse_position()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -37,9 +39,11 @@ func _on_ready():
 
 func toggle_level_passed():
 	level_pass = !level_pass
-
+	
 func player_dead():
 	is_dead = true
+	Global.music_time_on_kill = music.get_playback_position()
+	music.stop()
 	PlayerVariables.lose_life()
 	if !PlayerVariables.has_lifes():
 		Engine.time_scale = 1

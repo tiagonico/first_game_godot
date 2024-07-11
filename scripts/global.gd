@@ -6,6 +6,8 @@ var coins_to_life = 20
 var time = 0
 var is_hardcore = false
 var after_loading_scene
+var music_time_on_kill = 0
+var music_time_menu = 0
 
 func get_seconds():
 	return fmod(time, 60)
@@ -36,9 +38,10 @@ func go_to_next_level():
 	var next_level = PlayerVariables.player_level + 1
 	if next_level <= max_level:
 		PlayerVariables.player_level += 1
+		PlayerVariables.checkpoint = 0
 		goto_scene("res://scenes/level_"+str(next_level)+".tscn")
 	else:
-		PlayerVariables.reset_variables()
+		PlayerVariables.reset_variables(false)
 		go_to_main_menu()
 		
 func go_to_next_level_loading():
@@ -48,7 +51,7 @@ func go_to_next_level_loading():
 		after_loading_scene = "res://scenes/level_"+str(next_level)+".tscn"
 		goto_scene("res://scenes/loading.tscn")
 	else:
-		PlayerVariables.reset_variables()
+		PlayerVariables.reset_variables(false)
 		after_loading_scene = "res://scenes/menu.tscn"
 		goto_scene("res://scenes/loading.tscn")
 		

@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://38wbxmuh3u1t" path="res://scenes/level_goal.tscn" id="12_sug6x"]
 [ext_resource type="AudioStream" uid="uid://cwd0s8iyell16" path="res://assets/sounds/pause.mp3" id="14_6lav5"]
 [ext_resource type="AudioStream" uid="uid://cpaodkm0cn86j" path="res://assets/sounds/unpause.mp3" id="15_s81nb"]
-[ext_resource type="AudioStream" uid="uid://nst4r15ax8qu" path="res://assets/music/time_for_adventure.mp3" id="17_stq6n"]
+[ext_resource type="AudioStream" uid="uid://ba3paq3y01gbo" path="res://assets/music/Lvl_1.mp3" id="17_qxbiy"]
 [ext_resource type="AudioStream" uid="uid://dn77trlbs50cx" path="res://assets/sounds/menu_change.wav" id="18_emdnq"]
 [ext_resource type="AudioStream" uid="uid://ebh84mybmpni" path="res://assets/sounds/negative.wav" id="19_vws1c"]
 
@@ -1005,7 +1005,7 @@ bus = &"SFX"
 [node name="Music" type="AudioStreamPlayer" parent="Sounds"]
 unique_name_in_owner = true
 process_mode = 1
-stream = ExtResource("17_stq6n")
+stream = ExtResource("17_qxbiy")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"

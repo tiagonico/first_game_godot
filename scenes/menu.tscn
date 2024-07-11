@@ -64,6 +64,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Music:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-20.0, -50.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ijwao"]
 _data = {
@@ -430,7 +442,7 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Transition"]
-visible = false
+self_modulate = Color(1, 1, 1, 0)
 offset_left = -4.0
 offset_right = 1318.0
 offset_bottom = 727.0
@@ -438,17 +450,21 @@ color = Color(0, 0, 0, 1)
 
 [node name="MenuChange" type="AudioStreamPlayer2D" parent="CanvasLayer"]
 stream = ExtResource("3_dr0m7")
+bus = &"SFX"
 
 [node name="MenuChoose" type="AudioStreamPlayer2D" parent="CanvasLayer"]
 stream = ExtResource("4_k3myx")
+bus = &"SFX"
 
 [node name="MenuBack" type="AudioStreamPlayer2D" parent="CanvasLayer"]
 stream = ExtResource("5_2805a")
+bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource("6_rd8o5")
 volume_db = -20.0
 autoplay = true
+bus = &"Music"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(601, 337)
