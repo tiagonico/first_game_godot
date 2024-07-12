@@ -32,9 +32,6 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		
-	if Input.is_action_just_pressed("fullscreen"):
-		Global.toggle_fullscreen()
 	
 	if mouse_position != get_viewport().get_mouse_position():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -141,31 +138,31 @@ func disable_panel_buttons():
 	button_hardcore.disabled = true
 
 func _on_button_play_mouse_entered():
-	if !panel.visible:
+	if !panel.visible and button_selected != 1:
 		menu_change.play()
 		button_selected = 1
 		focus_button()
 	
 func _on_button_settings_mouse_entered():
-	if !panel.visible:
+	if !panel.visible and button_selected != 2:
 		menu_change.play()
 		button_selected = 2
 		focus_button()
 	
 func _on_button_quit_mouse_entered():
-	if !panel.visible:
+	if !panel.visible and button_selected != 3:
 		menu_change.play()
 		button_selected = 3
 		focus_button()
 	
 func _on_button_normal_mouse_entered():
-	if !locked:
+	if !locked and panel_button_selected != 1:
 		menu_change.play()
 		panel_button_selected = 1
 		focus_button_panel()
 	
 func _on_button_hardcore_mouse_entered():
-	if !locked:
+	if !locked and panel_button_selected != 2:
 		menu_change.play()
 		panel_button_selected = 2
 		focus_button_panel()
@@ -186,7 +183,8 @@ func _on_button_quit_pressed():
 	get_tree().quit()
 
 func _on_button_settings_pressed():
-	menu_choose.play()
+	Global.music_time_menu = music.get_playback_position()
+	Global.go_to_settings()
 	
 func _on_button_normal_pressed():
 	locked = true

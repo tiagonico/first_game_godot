@@ -22,4 +22,5 @@ func set_labels():
 	max_level.text = str(PlayerVariables.player_level)
 
 func _on_timer_timeout():
+	PlayerVariables.reset_variables(false)
 	Global.go_to_main_menu()

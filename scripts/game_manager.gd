@@ -55,9 +55,6 @@ func _process(delta):
 	if !level_pass:
 		Global.time += delta
 		hud.change_time(Global.get_seconds(),Global.get_minutes(),Global.get_hours())
-	
-	if Input.is_action_just_pressed("fullscreen"):
-		Global.toggle_fullscreen()
 
 	if Input.is_action_just_pressed("pause"):
 		toggle_menu.emit()
