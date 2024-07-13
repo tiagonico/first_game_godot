@@ -23,4 +23,4 @@ func set_labels():
 
 func _on_timer_timeout():
 	PlayerVariables.reset_variables(false)
-	Global.go_to_main_menu()
+	Global.go_to_main_menu(true)

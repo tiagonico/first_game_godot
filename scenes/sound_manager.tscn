@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://luntwl66ly37"]
+
+[ext_resource type="AudioStream" uid="uid://difl6ynph75w7" path="res://assets/music/menu.mp3" id="1_4ho88"]
+[ext_resource type="Script" path="res://scripts/global_music.gd" id="1_7ab1c"]
+[ext_resource type="AudioStream" uid="uid://dn77trlbs50cx" path="res://assets/sounds/menu_change.wav" id="3_wofcj"]
+[ext_resource type="AudioStream" uid="uid://e4svsbxonyqb" path="res://assets/sounds/menu_choose.mp3" id="4_qydyo"]
+[ext_resource type="AudioStream" uid="uid://ebh84mybmpni" path="res://assets/sounds/negative.wav" id="5_jx5fm"]
+
+[sub_resource type="Animation" id="Animation_yhu4y"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-20.0, -60.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e8g0q"]
+_data = {
+"fade_out": SubResource("Animation_yhu4y")
+}
+
+[node name="SoundManager" type="Node2D"]
+script = ExtResource("1_7ab1c")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_4ho88")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
+[node name="MenuChange" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wofcj")
+volume_db = -5.0
+
+[node name="MenuChoose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qydyo")
+volume_db = -20.0
+
+[node name="MenuBack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jx5fm")
+volume_db = -5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e8g0q")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

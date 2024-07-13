@@ -63,7 +63,7 @@ func _on_button_resume_pressed():
 func _on_button_quit_pressed():
 	_on_toggle_menu()
 	PlayerVariables.reset_variables(true)
-	Global.go_to_main_menu()
+	Global.go_to_main_menu(true)
 	
 func focus_button():
 	if button_selected == 1:

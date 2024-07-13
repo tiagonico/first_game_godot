@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var mouse_position
 var button_selected = 1
@@ -8,25 +8,24 @@ var panel_button_selected = 1
 var panel_number_of_buttons = 2
 var locked = false
 
+@onready var tile_map = $TileMap
+@onready var canvas_layer = $CanvasLayer
 @onready var button_play = $CanvasLayer/ButtonPlay
-@onready var button_quit = $CanvasLayer/ButtonQuit
-@onready var transition = %Transition
-@onready var panel = $CanvasLayer/Panel
 @onready var button_settings = $CanvasLayer/ButtonSettings
+@onready var button_quit = $CanvasLayer/ButtonQuit
+@onready var panel = $CanvasLayer/Panel
 @onready var button_normal = $CanvasLayer/Panel/ButtonNormal
 @onready var button_hardcore = $CanvasLayer/Panel/ButtonHardcore
 
-@onready var menu_change = $CanvasLayer/MenuChange
-@onready var menu_choose = $CanvasLayer/MenuChoose
-@onready var menu_back = $CanvasLayer/MenuBack
-@onready var music = $CanvasLayer/Music
+@onready var transition = %Transition
 
 func _ready():
 	mouse_position = get_viewport().get_mouse_position()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	panel.visible = false
-	music.volume_db = -20
-	music.play(Global.music_time_menu)
+	if Global.is_last_scene_settings:
+		button_selected = 2
+		Global.is_last_scene_settings = false
 	focus_button()
 
 func _process(_delta):
@@ -40,10 +39,10 @@ func _process(_delta):
 	if !locked:
 		if Input.is_action_just_pressed("up"):
 			button_pressed("up")
-			menu_change.play()
+			SoundManager.play_menu_change()
 		elif Input.is_action_just_pressed("down"):
 			button_pressed("down")
-			menu_change.play()
+			SoundManager.play_menu_change()
 		elif Input.is_action_just_pressed("jump"):
 			button_pressed("select")
 		elif Input.is_action_just_pressed("pause") or Input.is_action_just_pressed("walk"):
@@ -116,7 +115,7 @@ func button_pressed(option):
 				panel_button_selected = 1
 			focus_button_panel()
 		elif option == "back":
-			menu_back.play()
+			SoundManager.play_menu_back()
 			panel.visible = false
 			enable_main_buttons()
 			focus_button()	
@@ -139,31 +138,31 @@ func disable_panel_buttons():
 
 func _on_button_play_mouse_entered():
 	if !panel.visible and button_selected != 1:
-		menu_change.play()
+		SoundManager.play_menu_change()
 		button_selected = 1
 		focus_button()
 	
 func _on_button_settings_mouse_entered():
 	if !panel.visible and button_selected != 2:
-		menu_change.play()
+		SoundManager.play_menu_change()
 		button_selected = 2
 		focus_button()
 	
 func _on_button_quit_mouse_entered():
 	if !panel.visible and button_selected != 3:
-		menu_change.play()
+		SoundManager.play_menu_change()
 		button_selected = 3
 		focus_button()
 	
 func _on_button_normal_mouse_entered():
 	if !locked and panel_button_selected != 1:
-		menu_change.play()
+		SoundManager.play_menu_change()
 		panel_button_selected = 1
 		focus_button_panel()
 	
 func _on_button_hardcore_mouse_entered():
 	if !locked and panel_button_selected != 2:
-		menu_change.play()
+		SoundManager.play_menu_change()
 		panel_button_selected = 2
 		focus_button_panel()
 
@@ -173,7 +172,7 @@ func _on_transition_animation_finished(_anim_name):
 	Global.go_to_current_level_loading()
 	
 func _on_button_play_pressed():
-	menu_choose.play()
+	SoundManager.play_menu_choose()
 	panel.visible = true
 	disable_main_buttons()
 	release_focus_all()
@@ -183,17 +182,19 @@ func _on_button_quit_pressed():
 	get_tree().quit()
 
 func _on_button_settings_pressed():
-	Global.music_time_menu = music.get_playback_position()
+	SoundManager.play_menu_choose()
 	Global.go_to_settings()
 	
 func _on_button_normal_pressed():
 	locked = true
-	menu_choose.play()
+	SoundManager.play_menu_choose()
+	SoundManager.stop_menu_music()
 	Global.is_hardcore = false
 	transition.play("fade_out")
 
 func _on_button_hardcore_pressed():
 	locked = true
-	menu_choose.play()
+	SoundManager.play_menu_choose()
+	SoundManager.stop_menu_music()
 	Global.is_hardcore = true
-	transition.play("fade_out")
+	transition.play("fade_out")	

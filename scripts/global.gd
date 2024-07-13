@@ -7,7 +7,7 @@ var time = 0
 var is_hardcore = false
 var after_loading_scene
 var music_time_on_kill = 0
-var music_time_menu = 0
+var is_last_scene_settings = false
 
 func get_seconds():
 	return fmod(time, 60)
@@ -21,7 +21,7 @@ func reset_time():
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
-	go_to_main_menu()
+	go_to_main_menu(false)
 	
 func goto_scene(path):
 	call_deferred("_deferred_goto_scene", path)
@@ -42,7 +42,7 @@ func go_to_next_level():
 		goto_scene("res://scenes/level_"+str(next_level)+".tscn")
 	else:
 		PlayerVariables.reset_variables(false)
-		go_to_main_menu()
+		go_to_main_menu(true)
 		
 func go_to_next_level_loading():
 	var next_level = PlayerVariables.player_level + 1
@@ -68,8 +68,10 @@ func go_to_after_loading():
 func go_to_game_over():
 	goto_scene("res://scenes/game_over.tscn")
 	
-func go_to_main_menu():
+func go_to_main_menu(play_music):
 	goto_scene("res://scenes/menu.tscn")
+	if play_music:
+		SoundManager.play_menu_music()
 	
 func go_to_settings():
 	goto_scene("res://scenes/settings.tscn")
