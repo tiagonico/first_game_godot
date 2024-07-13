@@ -39,7 +39,11 @@ func _process(delta):
 		exausted = false
 		running_timer.stop()		
 		exausted_timer.stop()
-		animated_sprite_2d.play("idle")
+	
+		if animated_sprite_2d.animation == "falling":
+			animated_sprite_2d.play("rising")
+		elif animated_sprite_2d.animation == "running":	
+			animated_sprite_2d.play("idle")
 		
 	if animated_sprite_2d.animation == "falling" and collision_shape_2d.scale.y > 0.25:
 		collision_shape_2d.scale.y -= (0.75 * delta) / 0.7
