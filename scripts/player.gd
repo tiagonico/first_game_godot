@@ -37,7 +37,7 @@ func _physics_process(delta):
 
 		if in_water:
 			SPEED = 70
-			JUMP_VELOCITY = -100
+			JUMP_VELOCITY = -1000
 			gravity = 100
 			
 			if oxygen_level>0 and !in_oxygen_area:
@@ -116,5 +116,5 @@ func decrease_oxygen(delta):
 	hud.change_oxygen(oxygen_level)
 	
 func raise_oxygen(delta):
-	oxygen_level += delta * oxygen_velocity
+	oxygen_level += delta * oxygen_velocity * 5
 	hud.change_oxygen(oxygen_level)		

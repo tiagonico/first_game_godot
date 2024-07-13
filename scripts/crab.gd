@@ -9,7 +9,7 @@ extends Node2D
 @onready var collision_shape_2d = $Killzone/CollisionShape2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
-const RANGE = 100
+const RANGE = 130
 const SPEED = 70.0
 var direction 
 var running = false
@@ -40,21 +40,26 @@ func _process(delta):
 		running_timer.stop()		
 		exausted_timer.stop()
 		animated_sprite_2d.play("idle")
+		
+	if animated_sprite_2d.animation == "falling" and collision_shape_2d.scale.y > 0.25:
+		collision_shape_2d.scale.y -= (0.75 * delta) / 0.7
+			
+	if animated_sprite_2d.animation == "rising" and collision_shape_2d.scale.y < 1:
+		collision_shape_2d.scale.y += (0.75 * delta) / 0.7
 
 func _on_running_timer_timeout():
 	running = false
 	exausted = true
-	animated_sprite_2d.play("exausted")
-	collision_shape_2d.shape.size = Vector2(14,13)
-	collision_shape_2d.position = Vector2(0,5)
+	animated_sprite_2d.play("falling")
 	exausted_timer.start()
 
+
 func _on_exausted_timer_timeout():
-	exausted = false
-	running = true
-	animated_sprite_2d.play("running")
-	collision_shape_2d.shape.size = Vector2(14,13)
-	collision_shape_2d.position = Vector2(0,5)
-	#collision_shape_2d.shape.size = Vector2(14,25)
-	#collision_shape_2d.position = Vector2(0,0)
-	running_timer.start()
+	animated_sprite_2d.play("rising")
+
+func _on_animated_sprite_2d_animation_finished():
+	if animated_sprite_2d.animation == "rising":
+		exausted = false
+		running = true
+		animated_sprite_2d.play("running")
+		running_timer.start()

@@ -1408,25 +1408,25 @@ position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_luc6u")
 
 [node name="Crab" parent="Monsters" instance=ExtResource("14_osd45")]
-position = Vector2(-133, -567)
+position = Vector2(-195, -579)
 
 [node name="Crab2" parent="Monsters" instance=ExtResource("14_osd45")]
-position = Vector2(1885, -550)
+position = Vector2(1871, -563)
 
 [node name="Crab3" parent="Monsters" instance=ExtResource("14_osd45")]
-position = Vector2(1437, -550)
+position = Vector2(1431, -563)
 
 [node name="Crab4" parent="Monsters" instance=ExtResource("14_osd45")]
-position = Vector2(1675, -550)
+position = Vector2(1668, -563)
 
 [node name="Crab5" parent="Monsters" instance=ExtResource("14_osd45")]
-position = Vector2(2684, -551)
+position = Vector2(2690, -563)
 
 [node name="Crab6" parent="Monsters" instance=ExtResource("14_osd45")]
-position = Vector2(2908, -551)
+position = Vector2(2905, -563)
 
 [node name="Crab7" parent="Monsters" instance=ExtResource("14_osd45")]
-position = Vector2(3360, -567)
+position = Vector2(3364, -579)
 
 [node name="Texts" type="Node" parent="."]
 
