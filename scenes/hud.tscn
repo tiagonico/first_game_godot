@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfn0sui81vwg"]
+[gd_scene load_steps=8 format=3 uid="uid://bfn0sui81vwg"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_0sa2o"]
 [ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_ph7f4"]
 [ext_resource type="Texture2D" uid="uid://dbxkl5favbmgy" path="res://assets/sprites/heart pixel.png" id="2_iiowt"]
 [ext_resource type="Texture2D" uid="uid://caapnb0djjkg7" path="res://assets/sprites/coin.png" id="3_04gn2"]
+[ext_resource type="Texture2D" uid="uid://dr2h7yg5i6c2d" path="res://assets/sprites/teste.png" id="5_v574c"]
+[ext_resource type="Texture2D" uid="uid://blbgfdmw4snfn" path="res://assets/sprites/teste3.png" id="6_yyyy4"]
+[ext_resource type="Texture2D" uid="uid://da5hjk3jrcjbo" path="res://assets/sprites/teste2.png" id="7_w4801"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_0sa2o")
@@ -33,10 +36,10 @@ text = "x 0
 "
 
 [node name="LabelDifficulty" type="Label" parent="."]
-offset_left = 385.0
-offset_top = 7.0
-offset_right = 805.0
-offset_bottom = 93.0
+offset_left = 384.0
+offset_top = 160.0
+offset_right = 804.0
+offset_bottom = 246.0
 theme_override_colors/font_color = Color(1, 0.984314, 0, 1)
 theme_override_fonts/font = ExtResource("1_ph7f4")
 theme_override_font_sizes/font_size = 32
@@ -60,20 +63,20 @@ region_rect = Rect2(3, 3, 10, 10)
 
 [node name="ButtonResume" type="Button" parent="."]
 process_mode = 3
-offset_left = 384.0
-offset_top = 260.0
-offset_right = 800.0
-offset_bottom = 345.0
+offset_left = 392.0
+offset_top = 256.0
+offset_right = 808.0
+offset_bottom = 341.0
 theme_override_fonts/font = ExtResource("1_ph7f4")
 theme_override_font_sizes/font_size = 48
 text = "Resume"
 
 [node name="ButtonQuit" type="Button" parent="."]
 process_mode = 3
-offset_left = 386.0
-offset_top = 370.0
-offset_right = 802.0
-offset_bottom = 455.0
+offset_left = 394.0
+offset_top = 366.0
+offset_right = 810.0
+offset_bottom = 451.0
 theme_override_fonts/font = ExtResource("1_ph7f4")
 theme_override_font_sizes/font_size = 48
 text = "Quit"
@@ -117,6 +120,30 @@ text = "00
 
 "
 horizontal_alignment = 2
+
+[node name="LabelOxygen" type="Label" parent="."]
+offset_left = 552.0
+offset_top = 16.0
+offset_right = 648.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0.958809, 0.934549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ph7f4")
+theme_override_font_sizes/font_size = 16
+text = "Oxygen
+
+"
+horizontal_alignment = 1
+
+[node name="OxygenBar" type="TextureProgressBar" parent="."]
+offset_left = 496.0
+offset_top = 40.0
+offset_right = 704.0
+offset_bottom = 77.0
+value = 100.0
+texture_under = ExtResource("5_v574c")
+texture_over = ExtResource("6_yyyy4")
+texture_progress = ExtResource("7_w4801")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="mouse_entered" from="ButtonResume" to="." method="_on_button_resume_mouse_entered"]

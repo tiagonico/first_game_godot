@@ -17,16 +17,30 @@ var green = Color(0,1,0,1)
 @onready var menu_back = %MenuBack
 @onready var music = %Music
 
+@onready var label_oxygen = $LabelOxygen
+@onready var oxygen_bar = $OxygenBar
+
 func _on_lifes_changed(amount):
 	get_node("LabelLife").text = "x " + str(amount)
 
 func _on_coins_changed(amount):
 	get_node("LabelCoin").text = "x " + str(amount)
 	
+func change_oxygen(amount):
+	oxygen_bar.value = amount
+	
 func _on_ready():
 	get_node("ButtonResume").hide()
 	get_node("ButtonQuit").hide()
 	label_difficulty.hide()
+	
+	if PlayerVariables.player_level != 3:
+		oxygen_bar.visible = false
+		label_oxygen.visible = false
+	else:
+		oxygen_bar.visible = true
+		label_oxygen.visible = true
+	
 	if Global.is_hardcore:
 		label_difficulty.text = "HARDCORE"
 		label_difficulty.set("theme_override_colors/font_color",red)

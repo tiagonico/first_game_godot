@@ -46,10 +46,8 @@ func focus_button():
 
 func press_button(joy):
 	if button_selected == 1:
-		if !joy:
-			pass
-		else:
-			button_fullscreen.button_pressed = !button_fullscreen.button_pressed
+		if joy:
+			button_fullscreen.button_pressed = !button_fullscreen.button_pressed	
 	elif button_selected == 2:
 		_on_button_pressed()
 		
@@ -72,7 +70,6 @@ func button_pressed(option):
 		press_button(false)
 
 func _on_button_fullscreen_toggled(toggled_on):
-	print("toggled -> "+str(toggled_on))
 	Global.change_to_fullscreen(toggled_on)
 
 func _on_button_pressed():

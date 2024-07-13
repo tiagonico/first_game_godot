@@ -5,15 +5,19 @@ var SPEED = 100.0
 var JUMP_VELOCITY = -280.0
 var walk = 1
 var in_water = false
+var in_oxygen_area = false
 var last_velocity_y = 0
 var fall_velocity_kill = 600
 var water_position_y = 1243
+var oxygen_velocity = 5
+var oxygen_level = 100
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var game_manager = %GameManager
 @onready var jump_audio = $JumpAudio
 @onready var death_audio = $DeathAudio
 @onready var killzone = $"../Killzone"
+@onready var hud = %HUD
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -35,11 +39,21 @@ func _physics_process(delta):
 			SPEED = 70
 			JUMP_VELOCITY = -100
 			gravity = 100
+			
+			if oxygen_level>0 and !in_oxygen_area:
+				decrease_oxygen(delta)
+			if oxygen_level<100 and in_oxygen_area:
+				raise_oxygen(delta)
+				
+			if oxygen_level < 0:
+				oxygen_level = 0
+				killzone._on_body_entered(self)			
 		else:
 			SPEED = 100
 			JUMP_VELOCITY = -280
-			gravity = ProjectSettings.get_setting("physics/2d/default_gravity")		
-		
+			gravity = ProjectSettings.get_setting("physics/2d/default_gravity")			
+			if oxygen_level<100:
+				raise_oxygen(delta)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -96,3 +110,11 @@ func _physics_process(delta):
 	
 	last_velocity_y = velocity.y
 	move_and_slide()
+
+func decrease_oxygen(delta):
+	oxygen_level -= delta * oxygen_velocity
+	hud.change_oxygen(oxygen_level)
+	
+func raise_oxygen(delta):
+	oxygen_level += delta * oxygen_velocity
+	hud.change_oxygen(oxygen_level)		

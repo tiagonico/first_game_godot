@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cnc3g6jamxrrt"]
+[gd_scene load_steps=32 format=3 uid="uid://cnc3g6jamxrrt"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_5taoh"]
 [ext_resource type="Texture2D" uid="uid://crfrmakne58gd" path="res://assets/sprites/world_tileset.png" id="2_1vuv1"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dx5m7q7ffh3i6" path="res://scenes/player.tscn" id="7_no4ay"]
 [ext_resource type="PackedScene" uid="uid://c5fe7mvbpn53j" path="res://scenes/killzone.tscn" id="8_xc0uy"]
 [ext_resource type="PackedScene" uid="uid://bpnu2ti7oedfr" path="res://scenes/coin.tscn" id="9_c5jk6"]
+[ext_resource type="PackedScene" uid="uid://ddqog7ow5w5sh" path="res://scenes/oxygen_maker.tscn" id="9_qsr8i"]
 [ext_resource type="FontFile" uid="uid://dmf2to8tkpk5i" path="res://assets/fonts/PixelOperator8.ttf" id="15_slyok"]
 [ext_resource type="PackedScene" uid="uid://bcmdxblly1hyc" path="res://scenes/tip.tscn" id="16_n82qi"]
 [ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="17_gjoju"]
@@ -602,6 +603,9 @@ position = Vector2(-348, 2544)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(-32, 8)
 shape = SubResource("WorldBoundaryShape2D_7pq0q")
+
+[node name="OxygenMaker" parent="." instance=ExtResource("9_qsr8i")]
+position = Vector2(786, 1337)
 
 [node name="Coins" type="Node" parent="."]
 
