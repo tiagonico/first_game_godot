@@ -186,15 +186,17 @@ func _on_button_settings_pressed():
 	Global.go_to_settings()
 	
 func _on_button_normal_pressed():
-	locked = true
-	SoundManager.play_menu_choose()
-	SoundManager.stop_menu_music()
-	Global.is_hardcore = false
-	transition.play("fade_out")
+	if !locked:
+		locked = true
+		SoundManager.play_menu_choose()
+		SoundManager.stop_menu_music()
+		Global.is_hardcore = false
+		transition.play("fade_out")
 
 func _on_button_hardcore_pressed():
-	locked = true
-	SoundManager.play_menu_choose()
-	SoundManager.stop_menu_music()
-	Global.is_hardcore = true
-	transition.play("fade_out")	
+	if !locked:
+		locked = true
+		SoundManager.play_menu_choose()
+		SoundManager.stop_menu_music()
+		Global.is_hardcore = true
+		transition.play("fade_out")	

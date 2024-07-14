@@ -4,19 +4,19 @@
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_fvupr"]
 [ext_resource type="PackedScene" uid="uid://c5fe7mvbpn53j" path="res://scenes/killzone.tscn" id="2_q7ptt"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pm7aa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwblp"]
 atlas = ExtResource("1_dor4s")
 region = Rect2(0, 24, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1crqm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nocyc"]
 atlas = ExtResource("1_dor4s")
 region = Rect2(24, 24, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yfk8g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wks0"]
 atlas = ExtResource("1_dor4s")
 region = Rect2(48, 24, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q8m32"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbro2"]
 atlas = ExtResource("1_dor4s")
 region = Rect2(72, 24, 24, 24)
 
@@ -24,16 +24,16 @@ region = Rect2(72, 24, 24, 24)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pm7aa")
+"texture": SubResource("AtlasTexture_kwblp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1crqm")
+"texture": SubResource("AtlasTexture_nocyc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yfk8g")
+"texture": SubResource("AtlasTexture_3wks0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q8m32")
+"texture": SubResource("AtlasTexture_kbro2")
 }],
 "loop": true,
 "name": &"default",
@@ -49,8 +49,7 @@ script = ExtResource("1_fvupr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3p1q5")
 autoplay = "default"
-frame = 2
-frame_progress = 0.942865
+frame_progress = 0.0200342
 
 [node name="Killzone" parent="." instance=ExtResource("2_q7ptt")]
 
@@ -60,8 +59,11 @@ shape = SubResource("RectangleShape2D_is1o5")
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, 5)
-target_position = Vector2(13, 0)
+target_position = Vector2(15, 0)
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, 5)
-target_position = Vector2(-13, 0)
+target_position = Vector2(-15, 0)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="ready" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_ready"]

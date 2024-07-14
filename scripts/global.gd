@@ -8,6 +8,7 @@ var is_hardcore = false
 var after_loading_scene
 var music_time_on_kill = 0
 var is_last_scene_settings = false
+var player_dead = false
 
 func get_seconds():
 	return fmod(time, 60)

@@ -1460,7 +1460,7 @@ position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_luc6u")
 
 [node name="Seagull4" parent="Monsters" instance=ExtResource("13_tt6ce")]
-position = Vector2(830, -632)
+position = Vector2(-1100, -650)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Monsters/Seagull4"]
 libraries = {

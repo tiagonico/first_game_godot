@@ -2,7 +2,7 @@ extends Node
 
 var lifes_number = 3
 var coins_number = 0
-var player_level = 2
+var player_level = 1
 var checkpoint = 0
 
 func reset_variables(quit):
@@ -23,7 +23,10 @@ func has_lifes():
 	
 func get_checkpoint_position():
 	if player_level == 1:
-		return Vector2(-315,17)
+		if checkpoint == 0:
+			return Vector2(-315,17)
+		elif checkpoint == 1:
+			return Vector2(2521,-32)
 	elif player_level == 2:
 		if checkpoint == 0:
 			return Vector2(-1023,-555)

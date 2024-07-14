@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://u8f8hcemnotk"]
+
+[ext_resource type="Script" path="res://scripts/slime_2.gd" id="1_44dtq"]
+[ext_resource type="Texture2D" uid="uid://dkxbn3vcycrft" path="res://assets/sprites/slime_purple.png" id="2_fa3wh"]
+[ext_resource type="PackedScene" uid="uid://c5fe7mvbpn53j" path="res://scenes/killzone.tscn" id="3_g34bx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovivk"]
+atlas = ExtResource("2_fa3wh")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4ycu"]
+atlas = ExtResource("2_fa3wh")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yihf"]
+atlas = ExtResource("2_fa3wh")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntpmw"]
+atlas = ExtResource("2_fa3wh")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3p1q5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovivk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4ycu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yihf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntpmw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_is1o5"]
+size = Vector2(10, 15)
+
+[node name="Slime 2" type="Node2D"]
+script = ExtResource("1_44dtq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3p1q5")
+autoplay = "default"
+frame_progress = 0.0813431
+
+[node name="Killzone" parent="." instance=ExtResource("3_g34bx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_is1o5")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(13, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(-13, 0)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
