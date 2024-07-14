@@ -37,7 +37,7 @@ func _physics_process(delta):
 
 		if in_water:
 			SPEED = 70
-			JUMP_VELOCITY = -1000
+			JUMP_VELOCITY = -100
 			gravity = 100
 			
 			if oxygen_level>0 and !in_oxygen_area:

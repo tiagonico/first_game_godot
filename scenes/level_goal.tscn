@@ -115,6 +115,7 @@ offset_top = -68.0
 offset_right = 46.0
 offset_bottom = -32.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_o863y")
 theme_override_font_sizes/font_size = 8
 text = "Stage Clear
