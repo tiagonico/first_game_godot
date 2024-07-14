@@ -45,11 +45,31 @@ func _process(delta):
 		elif animated_sprite_2d.animation == "running":	
 			animated_sprite_2d.play("idle")
 		
-	if animated_sprite_2d.animation == "falling" and collision_shape_2d.scale.y > 0.25:
-		collision_shape_2d.scale.y -= (0.75 * delta) / 0.7
+	if animated_sprite_2d.animation == "falling":
+		if animated_sprite_2d.frame == 1:
+			collision_shape_2d.scale.y = 0.8
+		elif animated_sprite_2d.frame == 2:
+			collision_shape_2d.scale.y = 0.5
+		elif animated_sprite_2d.frame == 3:
+			collision_shape_2d.scale.y = 0.35 
+		elif animated_sprite_2d.frame == 4:
+			collision_shape_2d.scale.y = 0.3
+		elif animated_sprite_2d.frame > 4:
+			collision_shape_2d.scale.y = 0.25
 			
 	if animated_sprite_2d.animation == "rising" and collision_shape_2d.scale.y < 1:
-		collision_shape_2d.scale.y += (0.75 * delta) / 0.7
+		if animated_sprite_2d.frame < 2:
+			collision_shape_2d.scale.y = 0.25
+		elif animated_sprite_2d.frame == 2:
+			collision_shape_2d.scale.y = 0.3
+		elif animated_sprite_2d.frame == 3:
+			collision_shape_2d.scale.y = 0.35 
+		elif animated_sprite_2d.frame == 4:
+			collision_shape_2d.scale.y = 0.5
+		elif animated_sprite_2d.frame == 5:
+			collision_shape_2d.scale.y = 0.8
+		elif animated_sprite_2d.frame == 6:
+			collision_shape_2d.scale.y = 1
 
 func _on_running_timer_timeout():
 	running = false

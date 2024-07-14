@@ -126,7 +126,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"falling",
-"speed": 8.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -203,9 +203,8 @@ script = ExtResource("1_o6u8v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_iq2mt")
-animation = &"running"
+animation = &"rising"
 autoplay = "idle"
-frame_progress = 0.852119
 
 [node name="Killzone" parent="." instance=ExtResource("3_wqeyh")]
 
