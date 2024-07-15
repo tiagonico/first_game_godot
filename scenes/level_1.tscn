@@ -1261,7 +1261,8 @@ volume_db = -20.0
 bus = &"SFX"
 
 [node name="Checkpoint" parent="." instance=ExtResource("20_tjv51")]
-position = Vector2(2507, -45)
+position = Vector2(2499, -48)
+scale = Vector2(1, 1)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

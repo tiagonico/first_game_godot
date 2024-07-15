@@ -67,6 +67,7 @@ func _on_toggle_menu():
 		label_difficulty.show()
 		get_node("ButtonResume").show()
 		get_node("ButtonQuit").show()
+		button_selected = 1
 		get_node("ButtonResume").grab_focus()
 
 	is_paused = !is_paused
@@ -105,7 +106,9 @@ func button_pressed(option):
 		button_selected+=1
 		if button_selected > number_of_buttons:
 			button_selected = 1
-		focus_button()	
+		focus_button()
+	elif option == "back":
+		_on_button_resume_pressed()
 	elif option == "select":
 		press_button()
 

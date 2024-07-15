@@ -70,6 +70,8 @@ func _process(delta):
 			hud.button_pressed("up")
 		elif Input.is_action_just_pressed("down"):
 			hud.button_pressed("down")
+		elif Input.is_action_just_pressed("walk"):
+			hud.button_pressed("back")
 		elif Input.is_action_just_pressed("jump"):
 			hud.button_pressed("select")
 			
