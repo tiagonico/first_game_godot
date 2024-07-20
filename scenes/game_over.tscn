@@ -73,6 +73,7 @@ offset_top = -38.0
 offset_right = 1229.0
 offset_bottom = 708.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2(589, 331)
@@ -95,6 +96,7 @@ theme_override_colors/font_color = Color(1, 0.0196078, 0.0823529, 1)
 theme_override_fonts/font = ExtResource("2_smoai")
 theme_override_font_sizes/font_size = 64
 text = "GAME OVER"
+metadata/_edit_use_anchors_ = true
 
 [node name="MaxLevel" type="Label" parent="CanvasLayer"]
 offset_left = 370.0
@@ -105,6 +107,7 @@ theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("2_smoai")
 theme_override_font_sizes/font_size = 48
 text = "1"
+metadata/_edit_use_anchors_ = true
 
 [node name="MaxLevel2" type="Label" parent="CanvasLayer"]
 offset_left = 97.0
@@ -115,6 +118,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_smoai")
 theme_override_font_sizes/font_size = 48
 text = "Level"
+metadata/_edit_use_anchors_ = true
 
 [node name="Time" type="Label" parent="CanvasLayer"]
 offset_left = 919.0
@@ -125,6 +129,7 @@ theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("2_smoai")
 theme_override_font_sizes/font_size = 48
 text = "00:00"
+metadata/_edit_use_anchors_ = true
 
 [node name="Time2" type="Label" parent="CanvasLayer"]
 offset_left = 697.0
@@ -135,6 +140,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_smoai")
 theme_override_font_sizes/font_size = 48
 text = "Time"
+metadata/_edit_use_anchors_ = true
 
 [node name="GameOver" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource("4_mbeu6")

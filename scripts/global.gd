@@ -42,8 +42,7 @@ func go_to_next_level():
 		PlayerVariables.checkpoint = 0
 		goto_scene("res://scenes/level_"+str(next_level)+".tscn")
 	else:
-		PlayerVariables.reset_variables(false)
-		go_to_main_menu(true)
+		go_to_game_clear()
 		
 func go_to_next_level_loading():
 	var next_level = PlayerVariables.player_level + 1
@@ -68,6 +67,9 @@ func go_to_after_loading():
 	
 func go_to_game_over():
 	goto_scene("res://scenes/game_over.tscn")
+	
+func go_to_game_clear():
+	goto_scene("res://scenes/game_clear.tscn")
 	
 func go_to_main_menu(play_music):
 	goto_scene("res://scenes/menu.tscn")

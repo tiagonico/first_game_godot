@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://bsnxiqwa7ngxo"]
+
+[ext_resource type="Script" path="res://scripts/game_clear.gd" id="1_kbw80"]
+[ext_resource type="Texture2D" uid="uid://dnuv0vecpqkko" path="res://assets/sprites/knight.png" id="2_ioofh"]
+[ext_resource type="FontFile" uid="uid://ccyvbi5e0k2ym" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_0ryy8"]
+[ext_resource type="AudioStream" uid="uid://dtwyb1gt6e0iq" path="res://assets/sounds/game_clear.wav" id="4_wst55"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3yte"]
+atlas = ExtResource("2_ioofh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg6nb"]
+atlas = ExtResource("2_ioofh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft6ny"]
+atlas = ExtResource("2_ioofh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyepr"]
+atlas = ExtResource("2_ioofh")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mjkdq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3yte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg6nb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft6ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyepr")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 8.0
+}]
+
+[node name="Game Clear" type="Node2D"]
+script = ExtResource("1_kbw80")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -11.0
+offset_top = -38.0
+offset_right = 1229.0
+offset_bottom = 708.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(589, 331)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_mjkdq")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.442941
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+wait_time = 13.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 102.0
+offset_top = 138.0
+offset_right = 1094.0
+offset_bottom = 227.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_0ryy8")
+theme_override_font_sizes/font_size = 64
+text = "CONGRATULATIONS!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Time" type="Label" parent="CanvasLayer"]
+offset_left = 534.0
+offset_top = 572.0
+offset_right = 910.0
+offset_bottom = 628.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_0ryy8")
+theme_override_font_sizes/font_size = 48
+text = "00:00"
+metadata/_edit_use_anchors_ = true
+
+[node name="Time2" type="Label" parent="CanvasLayer"]
+offset_left = 314.0
+offset_top = 571.0
+offset_right = 690.0
+offset_bottom = 627.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_0ryy8")
+theme_override_font_sizes/font_size = 48
+text = "Time"
+metadata/_edit_use_anchors_ = true
+
+[node name="Winning" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource("4_wst55")
+volume_db = -20.0
+bus = &"SFX"
+
+[connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]

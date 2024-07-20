@@ -1112,6 +1112,10 @@ unique_name_in_owner = true
 process_mode = 3
 script = ExtResource("1_xuq4i")
 
+[node name="Barco" type="Sprite2D" parent="."]
+position = Vector2(4718, -575)
+texture = ExtResource("27_ey7ab")
+
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-332, -571)
 tile_set = SubResource("TileSet_5p745")
@@ -1913,10 +1917,6 @@ motion_mirroring = Vector2(429, 0)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("26_6e8xm")
 centered = false
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(4718, -575)
-texture = ExtResource("27_ey7ab")
 
 [connection signal="coins_changed" from="GameManager" to="HUD" method="_on_coins_changed"]
 [connection signal="lifes_changed" from="GameManager" to="HUD" method="_on_lifes_changed"]

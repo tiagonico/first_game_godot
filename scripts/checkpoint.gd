@@ -10,7 +10,7 @@ func _on_ready():
 		visible = false
 		
 func _on_body_entered(_body):
-	if PlayerVariables.checkpoint != 1:
+	if PlayerVariables.checkpoint != 1 and !Global.is_hardcore:
 		audio_stream_player.play()
 	PlayerVariables.checkpoint = 1
 	animated_sprite_2d.play("idle")
