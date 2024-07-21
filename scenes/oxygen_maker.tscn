@@ -61,7 +61,7 @@ shape = SubResource("RectangleShape2D_k2u7v")
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_tjuaq")
 autoplay = "default"
-frame_progress = 0.0704818
+frame_progress = 0.212537
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 
