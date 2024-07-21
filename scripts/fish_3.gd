@@ -24,8 +24,8 @@ func _process(delta):
 			animated_sprite_2d.flip_h = true
 		elif direction > 0 and animated_sprite_2d.flip_h:
 			animated_sprite_2d.flip_h = false			
-
-	if abs(distance) < RANGE and !game_manager.is_dead:
+		position.distance_to(player.position)
+	if position.distance_to(player.position) < RANGE and !game_manager.is_dead:
 		start_running = true
 		animated_sprite_2d.play("running")
 		
