@@ -2,7 +2,7 @@
 extends PathFollow2D
 
 @export var process: bool = false
-@export var factor: int = 80
+@export var factor: int = 120
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 func _on_ready():

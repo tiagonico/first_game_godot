@@ -34,7 +34,7 @@ func get_checkpoint_position():
 			return Vector2(2516,-603)
 	elif player_level == 3:
 		if checkpoint == 0:
-			return Vector2(1800,2330)
+			return Vector2(1811,2313)
 		elif checkpoint == 1:
 			return Vector2(488,1230)
 		

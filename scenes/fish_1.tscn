@@ -56,9 +56,9 @@ position = Vector2(0, 4)
 curve = SubResource("Curve2D_vg7hd")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(289.845, -50.8397)
+position = Vector2(238.68, -78.4023)
 scale = Vector2(1, 1)
-progress = 610.0
+progress = 546.374
 rotates = false
 script = ExtResource("1_tdqtd")
 process = true

@@ -1,6 +1,7 @@
-[gd_scene load_steps=66 format=3 uid="uid://cfd3b7ag7cd4d"]
+[gd_scene load_steps=73 format=3 uid="uid://cfd3b7ag7cd4d"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_xuq4i"]
+[ext_resource type="Texture2D" uid="uid://clclyun5aqemh" path="res://assets/sprites/boat-Sheet.png" id="2_0d10g"]
 [ext_resource type="Texture2D" uid="uid://crfrmakne58gd" path="res://assets/sprites/world_tileset.png" id="2_8s3jo"]
 [ext_resource type="PackedScene" uid="uid://dx5m7q7ffh3i6" path="res://scenes/player.tscn" id="3_ru0mk"]
 [ext_resource type="Texture2D" uid="uid://if1gobuy30fd" path="res://assets/sprites/spikes.png" id="3_xt0n8"]
@@ -26,7 +27,56 @@
 [ext_resource type="AudioStream" uid="uid://dn77trlbs50cx" path="res://assets/sounds/menu_change.wav" id="25_ho3rg"]
 [ext_resource type="Texture2D" uid="uid://dn4c83114pco3" path="res://assets/images/background_lvl_2.png" id="26_6e8xm"]
 [ext_resource type="AudioStream" uid="uid://ebh84mybmpni" path="res://assets/sounds/negative.wav" id="26_d6rlr"]
-[ext_resource type="Texture2D" uid="uid://8d7iob3mlab1" path="res://assets/sprites/boat.png" id="27_ey7ab"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq1fp"]
+atlas = ExtResource("2_0d10g")
+region = Rect2(0, 0, 221, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgd3p"]
+atlas = ExtResource("2_0d10g")
+region = Rect2(221, 0, 221, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tacyq"]
+atlas = ExtResource("2_0d10g")
+region = Rect2(442, 0, 221, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk5aq"]
+atlas = ExtResource("2_0d10g")
+region = Rect2(663, 0, 221, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frtdr"]
+atlas = ExtResource("2_0d10g")
+region = Rect2(884, 0, 221, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skil0"]
+atlas = ExtResource("2_0d10g")
+region = Rect2(1105, 0, 221, 107)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_04brp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq1fp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgd3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tacyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vk5aq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frtdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skil0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_704rq"]
 texture = ExtResource("2_8s3jo")
@@ -1112,9 +1162,11 @@ unique_name_in_owner = true
 process_mode = 3
 script = ExtResource("1_xuq4i")
 
-[node name="Barco" type="Sprite2D" parent="."]
+[node name="Boat" type="AnimatedSprite2D" parent="."]
 position = Vector2(4718, -575)
-texture = ExtResource("27_ey7ab")
+sprite_frames = SubResource("SpriteFrames_04brp")
+autoplay = "default"
+frame_progress = 0.295753
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-332, -571)

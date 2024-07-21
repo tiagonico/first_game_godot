@@ -128,7 +128,7 @@ position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_n0jrr")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.17651
+frame_progress = 0.0926822
 
 [node name="Area2D" type="Area2D" parent="."]
 visibility_layer = 2
