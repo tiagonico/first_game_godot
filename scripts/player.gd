@@ -15,7 +15,6 @@ var oxygen_level = 100
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var game_manager = %GameManager
 @onready var jump_audio = $JumpAudio
-@onready var death_audio = $DeathAudio
 @onready var killzone = $"../Killzone"
 @onready var hud = %HUD
 
@@ -37,12 +36,12 @@ func _physics_process(delta):
 
 		if in_water:
 			SPEED = 70
-			JUMP_VELOCITY = -100
+			JUMP_VELOCITY = -100  
 			gravity = 100
 			
-			if oxygen_level>0 and !in_oxygen_area:
+			if oxygen_level>0 and !in_oxygen_area and !Global.player_dead:
 				decrease_oxygen(delta)
-			if oxygen_level<100 and in_oxygen_area:
+			if oxygen_level<100 and in_oxygen_area and !Global.player_dead:
 				raise_oxygen(delta)
 				
 			if oxygen_level < 0:
@@ -52,7 +51,7 @@ func _physics_process(delta):
 			SPEED = 100
 			JUMP_VELOCITY = -280
 			gravity = ProjectSettings.get_setting("physics/2d/default_gravity")			
-			if oxygen_level<100:
+			if oxygen_level<100 and !Global.player_dead:
 				raise_oxygen(delta)
 	# Add the gravity.
 	if not is_on_floor():
@@ -69,7 +68,6 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if firstLoop:
 			animated_sprite_2d.play("death")
-			death_audio.play()
 			firstLoop = false
 	else:
 		

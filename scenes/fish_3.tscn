@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://c0c5ff4ojo251"]
+
+[ext_resource type="PackedScene" uid="uid://c5fe7mvbpn53j" path="res://scenes/killzone.tscn" id="1_lvfbb"]
+[ext_resource type="Script" path="res://scripts/fish_3.gd" id="1_ppx4m"]
+[ext_resource type="Texture2D" uid="uid://ufhc2es8vnfy" path="res://assets/sprites/fish-dart.png" id="2_thg2q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h6sy"]
+atlas = ExtResource("2_thg2q")
+region = Rect2(0, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dow6h"]
+atlas = ExtResource("2_thg2q")
+region = Rect2(39, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phhdn"]
+atlas = ExtResource("2_thg2q")
+region = Rect2(78, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8lxh"]
+atlas = ExtResource("2_thg2q")
+region = Rect2(117, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q38o"]
+atlas = ExtResource("2_thg2q")
+region = Rect2(0, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wed6"]
+atlas = ExtResource("2_thg2q")
+region = Rect2(39, 0, 39, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_24i0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h6sy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dow6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phhdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8lxh")
+}],
+"loop": true,
+"name": &"running",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q38o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wed6")
+}],
+"loop": true,
+"name": &"waiting",
+"speed": 2.0
+}]
+
+[node name="Fish 3" type="Node2D"]
+script = ExtResource("1_ppx4m")
+
+[node name="Killzone" parent="." instance=ExtResource("1_lvfbb")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Killzone"]
+position = Vector2(-8, 8)
+polygon = PackedVector2Array(8, 0, 19, -4, 24, -5, 26, -7, 24, -9, 20, -9, 14, -14, 0, -14, -3, -8, -3, -4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_24i0u")
+animation = &"waiting"
+autoplay = "waiting"
+frame_progress = 0.973576
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

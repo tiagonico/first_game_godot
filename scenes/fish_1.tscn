@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://dalobjff7b7x4"]
+
+[ext_resource type="Script" path="res://scripts/fish_1.gd" id="1_tdqtd"]
+[ext_resource type="Texture2D" uid="uid://c3kxseg6dwutx" path="res://assets/sprites/fish.png" id="1_uh8by"]
+[ext_resource type="PackedScene" uid="uid://c5fe7mvbpn53j" path="res://scenes/killzone.tscn" id="2_rrwpc"]
+
+[sub_resource type="Curve2D" id="Curve2D_vg7hd"]
+_data = {
+"points": PackedVector2Array(54.5675, -27.8406, -54.5675, 27.8406, 270, -19, 22.9165, -25.6254, -22.9165, 25.6254, 26, -74, -23.699, -30.3386, 23.699, 30.3386, 27, -19, -45.935, -30.13, 45.935, 30.13, 270, -74, 0, 0, 0, 0, 270, -19)
+}
+point_count = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy816"]
+atlas = ExtResource("1_uh8by")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb8s1"]
+atlas = ExtResource("1_uh8by")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvu24"]
+atlas = ExtResource("1_uh8by")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xspvt"]
+atlas = ExtResource("1_uh8by")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kd7aa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy816")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb8s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvu24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xspvt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3omvs"]
+size = Vector2(21.5777, 17.0801)
+
+[node name="Fish 1" type="Node2D"]
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, 4)
+curve = SubResource("Curve2D_vg7hd")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(289.845, -50.8397)
+scale = Vector2(1, 1)
+progress = 610.0
+rotates = false
+script = ExtResource("1_tdqtd")
+process = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_kd7aa")
+autoplay = "default"
+frame_progress = 0.469963
+
+[node name="Killzone" parent="Path2D/PathFollow2D" instance=ExtResource("2_rrwpc")]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Killzone"]
+position = Vector2(-1.63345, 2.37981)
+shape = SubResource("RectangleShape2D_3omvs")
+
+[connection signal="ready" from="Path2D/PathFollow2D" to="Path2D/PathFollow2D" method="_on_ready"]

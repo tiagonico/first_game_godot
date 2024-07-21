@@ -1,11 +1,20 @@
-extends Area2D
+extends Node2D
 
+
+@onready var mine = $Mine
+@onready var explosion = $Explosion
 @onready var timer = $Timer
-@onready var death_audio = $DeathAudio
+@onready var explosion_sound = $ExplosionSound
 
-func _on_body_entered(_body):
+func _ready():
+	explosion.visible = false
+
+func _on_area_2d_body_entered(body):
 	if !Global.player_dead:
-		death_audio.play()
+		explosion_sound.play()
+		explosion.visible = true
+		explosion.play("explosion")
+		mine.visible = false
 		Engine.time_scale = 0.5
 		Global.player_dead = true
 		SignalManager.player_died.emit()
@@ -22,3 +31,7 @@ func _on_timer_timeout():
 		else:
 			PlayerVariables.reset_variables(false)
 			Global.go_to_current_level()
+
+
+func _on_animated_sprite_2d_animation_finished():
+	explosion.visible = false

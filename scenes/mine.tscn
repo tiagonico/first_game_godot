@@ -1,0 +1,149 @@
+[gd_scene load_steps=21 format=3 uid="uid://6xkartbpt70t"]
+
+[ext_resource type="Script" path="res://scripts/mine.gd" id="1_yrkh4"]
+[ext_resource type="Texture2D" uid="uid://doo6v8w7ylijr" path="res://assets/sprites/mine-small-Sheet.png" id="3_s0ybn"]
+[ext_resource type="Texture2D" uid="uid://b2jy5n16sonwr" path="res://assets/sprites/explosion.png" id="4_bxldg"]
+[ext_resource type="AudioStream" uid="uid://ctijqdu1bmwku" path="res://assets/sounds/explosion.wav" id="4_hbk5d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrq3n"]
+atlas = ExtResource("4_bxldg")
+region = Rect2(0, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0okpp"]
+atlas = ExtResource("4_bxldg")
+region = Rect2(60, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4ddi"]
+atlas = ExtResource("4_bxldg")
+region = Rect2(120, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgcs2"]
+atlas = ExtResource("4_bxldg")
+region = Rect2(180, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyep6"]
+atlas = ExtResource("4_bxldg")
+region = Rect2(240, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhiw6"]
+atlas = ExtResource("4_bxldg")
+region = Rect2(300, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dp8d"]
+atlas = ExtResource("4_bxldg")
+region = Rect2(360, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ei8p"]
+atlas = ExtResource("4_bxldg")
+region = Rect2(420, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6qxd"]
+atlas = ExtResource("4_bxldg")
+region = Rect2(480, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx2xp"]
+atlas = ExtResource("4_bxldg")
+region = Rect2(540, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e52wr"]
+atlas = ExtResource("4_bxldg")
+region = Rect2(600, 0, 60, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8fbbd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrq3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0okpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4ddi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgcs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyep6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhiw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dp8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ei8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6qxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kx2xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e52wr")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 15.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cprj"]
+atlas = ExtResource("3_s0ybn")
+region = Rect2(0, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15817"]
+atlas = ExtResource("3_s0ybn")
+region = Rect2(31, 0, 31, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0jrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cprj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15817")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3phar"]
+radius = 11.0
+
+[node name="Mine" type="Node2D"]
+script = ExtResource("1_yrkh4")
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -11)
+sprite_frames = SubResource("SpriteFrames_8fbbd")
+animation = &"explosion"
+
+[node name="Mine" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_n0jrr")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.17651
+
+[node name="Area2D" type="Area2D" parent="."]
+visibility_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3phar")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hbk5d")
+volume_db = -20.0
+pitch_scale = 0.5
+
+[connection signal="animation_finished" from="Explosion" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

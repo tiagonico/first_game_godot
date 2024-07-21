@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://dwb0j42fkpl70"]
+
+[ext_resource type="Texture2D" uid="uid://dyx68xfrwwgre" path="res://assets/sprites/fish-big.png" id="1_rut6m"]
+[ext_resource type="PackedScene" uid="uid://c5fe7mvbpn53j" path="res://scenes/killzone.tscn" id="1_ukd4r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaauu"]
+atlas = ExtResource("1_rut6m")
+region = Rect2(0, 0, 54, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dllwr"]
+atlas = ExtResource("1_rut6m")
+region = Rect2(54, 0, 54, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfyru"]
+atlas = ExtResource("1_rut6m")
+region = Rect2(108, 0, 54, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uwkc"]
+atlas = ExtResource("1_rut6m")
+region = Rect2(162, 0, 54, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjovp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaauu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dllwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfyru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uwkc")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aorg7"]
+size = Vector2(37, 30)
+
+[node name="Fish 2" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fjovp")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.617507
+
+[node name="Killzone" parent="." instance=ExtResource("1_ukd4r")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(4.5, 4)
+shape = SubResource("RectangleShape2D_aorg7")
