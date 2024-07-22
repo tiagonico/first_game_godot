@@ -60,6 +60,7 @@ animations = [{
 }]
 
 [node name="Fish 3" type="Node2D"]
+z_index = -1
 script = ExtResource("1_ppx4m")
 
 [node name="Killzone" parent="." instance=ExtResource("1_lvfbb")]
