@@ -858,7 +858,7 @@ position = Vector2(4955, 3354)
 [node name="Big Fishes" type="Node" parent="Monsters"]
 
 [node name="Fish 2" parent="Monsters/Big Fishes" instance=ExtResource("13_dflxv")]
-position = Vector2(2632, 2039)
+position = Vector2(1759, 2258)
 
 [node name="Mines" type="Node" parent="Monsters"]
 
