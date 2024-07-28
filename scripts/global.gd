@@ -4,8 +4,10 @@ var current_scene = null
 var max_level = 3
 var coins_to_life = 20
 var time = 0
+var last_time_jump_pressed = 0
 var is_hardcore = false
 var after_loading_scene
+var is_boosted = false
 var music_time_on_kill = 0
 var is_last_scene_settings = false
 var player_dead = false
@@ -18,6 +20,9 @@ func get_hours():
 	return get_minutes() / 60
 func reset_time():
 	time = 0
+	
+func get_time_from_last_jump():
+	return time - last_time_jump_pressed
 
 func _ready():
 	var root = get_tree().root
