@@ -3,12 +3,12 @@ extends Node
 var lifes_number = 3
 var coins_number = 0
 var player_level = 3
-var checkpoint = 0
+var checkpoint = 1
 
 func reset_variables(quit):
 	coins_number = 0
 	lifes_number = 3
-	checkpoint = 0
+	checkpoint = 1
 	if quit:
 		player_level = 1	
 	if Global.is_hardcore:
@@ -36,6 +36,8 @@ func get_checkpoint_position():
 		if checkpoint == 0:
 			return Vector2(1811,2313)
 		elif checkpoint == 1:
+			return Vector2(3296,2922)
+		elif checkpoint == 2:
 			return Vector2(4410,3482)
 		
 
