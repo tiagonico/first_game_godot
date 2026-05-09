@@ -2,7 +2,7 @@ extends Node
 
 var lifes_number = 3
 var coins_number = 0
-var player_level = 2
+var player_level = 1
 var checkpoint = 0
 
 func reset_variables(quit):
@@ -10,10 +10,10 @@ func reset_variables(quit):
 	lifes_number = 3
 	checkpoint = 0
 	if quit:
-		player_level = 1	
+		player_level = 1
 	if Global.is_hardcore:
 		player_level = 1
-		lifes_number = 1	
+		lifes_number = 2
 	
 func lose_life():
 	lifes_number-=1
