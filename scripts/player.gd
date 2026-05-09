@@ -8,7 +8,7 @@ var in_water = false
 var in_oxygen_area = false
 var last_velocity_y = 0
 var fall_velocity_kill = 600
-var water_position_y = 1243
+var water_position_y = 2171
 var oxygen_velocity = 5
 var oxygen_level = 100
 
