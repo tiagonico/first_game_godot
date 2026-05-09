@@ -15,6 +15,12 @@ var direction
 var running = false
 var exausted = false
 
+func _ready():
+	if Global.is_hardcore:
+		scale.x = 1
+		scale.y = 1
+		position.y = position.y - 5
+
 func _process(delta):
 	var distance = player.position.x - position.x
 	if distance < 0:
