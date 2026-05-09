@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cnc3g6jamxrrt"]
+[gd_scene load_steps=42 format=3 uid="uid://cnc3g6jamxrrt"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_5taoh"]
 [ext_resource type="Texture2D" uid="uid://crfrmakne58gd" path="res://assets/sprites/world_tileset.png" id="2_1vuv1"]
@@ -21,6 +21,8 @@
 [ext_resource type="AudioStream" uid="uid://cvsfbsxd3xjmg" path="res://assets/music/lvl_2.mp3" id="18_3kpfr"]
 [ext_resource type="PackedScene" uid="uid://bfn0sui81vwg" path="res://scenes/hud.tscn" id="18_fwjex"]
 [ext_resource type="PackedScene" uid="uid://38wbxmuh3u1t" path="res://scenes/level_goal.tscn" id="19_b2gxc"]
+[ext_resource type="Texture2D" uid="uid://sbk2m6xc0blq" path="res://assets/sprites/O2 sign.png" id="19_sbpdu"]
+[ext_resource type="Texture2D" uid="uid://deycgnod8q125" path="res://assets/sprites/O2 sign_UP.png" id="20_6pwge"]
 [ext_resource type="PackedScene" uid="uid://bdmmc8tmnjqa8" path="res://scenes/checkpoint.tscn" id="20_bgsin"]
 [ext_resource type="AudioStream" uid="uid://cwd0s8iyell16" path="res://assets/sounds/pause.mp3" id="21_igtps"]
 [ext_resource type="AudioStream" uid="uid://cpaodkm0cn86j" path="res://assets/sounds/unpause.mp3" id="22_q4kc7"]
@@ -913,6 +915,16 @@ theme_override_font_sizes/font_size = 8
 text = "Level 3"
 horizontal_alignment = 1
 
+[node name="Oxygen Signs" type="Node" parent="."]
+
+[node name="0xygen Sign 1" type="Sprite2D" parent="Oxygen Signs"]
+position = Vector2(3754, 2906)
+texture = ExtResource("19_sbpdu")
+
+[node name="0xygen Sign 2" type="Sprite2D" parent="Oxygen Signs"]
+position = Vector2(3447, 2954)
+texture = ExtResource("20_6pwge")
+
 [node name="Tips" type="Node" parent="."]
 
 [node name="Tip" parent="Tips" instance=ExtResource("16_n82qi")]
@@ -952,11 +964,6 @@ offset_top = 1995.0
 offset_right = 2186.0
 offset_bottom = 2549.0
 color = Color(0, 0, 0, 1)
-
-[node name="Checkpoint2" parent="." instance=ExtResource("20_bgsin")]
-position = Vector2(4419, 3466)
-scale = Vector2(1, 1)
-script = ExtResource("22_wokxe")
 
 [node name="Sounds" type="Node" parent="."]
 
@@ -1014,9 +1021,16 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("27_ufnwi")
 centered = false
 
-[node name="Checkpoint1" parent="." instance=ExtResource("20_bgsin")]
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("20_bgsin")]
 position = Vector2(3302, 2907)
 scale = Vector2(1, 1)
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("20_bgsin")]
+position = Vector2(4419, 3466)
+scale = Vector2(1, 1)
+script = ExtResource("22_wokxe")
 
 [connection signal="coins_changed" from="GameManager" to="HUD" method="_on_coins_changed"]
 [connection signal="lifes_changed" from="GameManager" to="HUD" method="_on_lifes_changed"]

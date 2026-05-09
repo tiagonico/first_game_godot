@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cslnar4fjqoqf"]
+
+[ext_resource type="Texture2D" uid="uid://sbk2m6xc0blq" path="res://assets/sprites/O2 sign.png" id="1_twtyq"]
+
+[node name="Oxygen Sign" type="Area2D"]
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_twtyq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="ready" from="." to="." method="_on_ready"]

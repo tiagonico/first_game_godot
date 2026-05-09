@@ -8,6 +8,8 @@ extends Node2D
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	set_labels()
+	if !Global.is_hardcore:
+		timer.wait_time = 5
 	timer.start()
 	game_over.play()
 
@@ -23,4 +25,7 @@ func set_labels():
 
 func _on_timer_timeout():
 	PlayerVariables.reset_variables(false)
-	Global.go_to_main_menu(true)
+	if Global.is_hardcore:
+		Global.go_to_main_menu(true)
+	else:
+		Global.go_to_gameover_continue()

@@ -4,6 +4,7 @@ extends Node2D
 @onready var menu_change = $MenuChange
 @onready var menu_choose = $MenuChoose
 @onready var menu_back = $MenuBack
+@onready var level_clear = $LevelClear
 @onready var animation_player = $AnimationPlayer
 
 
@@ -25,3 +26,6 @@ func play_menu_choose():
 	
 func play_menu_back():
 	menu_back.play()
+	
+func play_level_clear():
+	level_clear.play()

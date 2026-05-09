@@ -80,6 +80,9 @@ func go_to_main_menu(play_music):
 	goto_scene("res://scenes/menu.tscn")
 	if play_music:
 		SoundManager.play_menu_music()
+		
+func go_to_gameover_continue():
+	goto_scene("res://scenes/continue.tscn")
 	
 func go_to_settings():
 	goto_scene("res://scenes/settings.tscn")

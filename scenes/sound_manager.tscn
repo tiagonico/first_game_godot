@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://luntwl66ly37"]
+[gd_scene load_steps=9 format=3 uid="uid://luntwl66ly37"]
 
 [ext_resource type="AudioStream" uid="uid://difl6ynph75w7" path="res://assets/music/menu.mp3" id="1_4ho88"]
 [ext_resource type="Script" path="res://scripts/global_music.gd" id="1_7ab1c"]
+[ext_resource type="AudioStream" uid="uid://c0ct5uts7p2cq" path="res://assets/sounds/level-win.mp3" id="2_sg8ul"]
 [ext_resource type="AudioStream" uid="uid://dn77trlbs50cx" path="res://assets/sounds/menu_change.wav" id="3_wofcj"]
 [ext_resource type="AudioStream" uid="uid://e4svsbxonyqb" path="res://assets/sounds/menu_choose.mp3" id="4_qydyo"]
 [ext_resource type="AudioStream" uid="uid://ebh84mybmpni" path="res://assets/sounds/negative.wav" id="5_jx5fm"]
@@ -29,6 +30,9 @@ _data = {
 
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_7ab1c")
+
+[node name="LevelClear" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_sg8ul")
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_4ho88")

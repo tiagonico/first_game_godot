@@ -17,8 +17,9 @@ func _on_timer_timeout():
 	if PlayerVariables.has_lifes():
 		Global.go_to_current_level()
 	else:
-		if Global.is_hardcore:
-			Global.go_to_game_over()
-		else:
-			PlayerVariables.reset_variables(false)
-			Global.go_to_current_level()
+		Global.go_to_game_over()
+		#if Global.is_hardcore:
+			#Global.go_to_game_over()
+		#else:
+			#PlayerVariables.reset_variables(false)
+			#Global.go_to_current_level()
