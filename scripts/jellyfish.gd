@@ -1,6 +1,6 @@
 extends Node2D
 
-const JUMP_ACCURACY = 0.2
+const JUMP_ACCURACY = 0.15
 
 func _on_area_2d_body_entered(body):
 	if Global.get_time_from_last_jump() < JUMP_ACCURACY:

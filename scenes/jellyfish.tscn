@@ -1,22 +1,104 @@
-[gd_scene load_steps=4 format=3 uid="uid://curid6qeglx3w"]
+[gd_scene load_steps=15 format=3 uid="uid://curid6qeglx3w"]
 
 [ext_resource type="Script" path="res://scripts/jellyfish.gd" id="1_dbens"]
-[ext_resource type="Texture2D" uid="uid://bqa7odklsx7vx" path="res://assets/sprites/oxygen_plant.png" id="2_wxkx4"]
+[ext_resource type="Texture2D" uid="uid://bombejhdlcfjf" path="res://assets/sprites/jellyfish-Sheet.png" id="3_42eok"]
+[ext_resource type="PackedScene" uid="uid://c5fe7mvbpn53j" path="res://scenes/killzone.tscn" id="4_wbmep"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_crj6s"]
-size = Vector2(45, 7)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrpoq"]
+size = Vector2(26, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhemm"]
+atlas = ExtResource("3_42eok")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpn2o"]
+atlas = ExtResource("3_42eok")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxleu"]
+atlas = ExtResource("3_42eok")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar6vc"]
+atlas = ExtResource("3_42eok")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va1av"]
+atlas = ExtResource("3_42eok")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1surt"]
+atlas = ExtResource("3_42eok")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb25o"]
+atlas = ExtResource("3_42eok")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6e1q4"]
+atlas = ExtResource("3_42eok")
+region = Rect2(336, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7h4o1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhemm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpn2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxleu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar6vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va1av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1surt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gb25o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6e1q4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f66w8"]
+size = Vector2(21, 14)
 
 [node name="Jellyfish" type="Node2D"]
 script = ExtResource("1_dbens")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wxkx4")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, -5)
-shape = SubResource("RectangleShape2D_crj6s")
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_xrpoq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 7)
+sprite_frames = SubResource("SpriteFrames_7h4o1")
+autoplay = "default"
+frame_progress = 0.419475
+
+[node name="Killzone" parent="." instance=ExtResource("4_wbmep")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-0.5, 14)
+shape = SubResource("RectangleShape2D_f66w8")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

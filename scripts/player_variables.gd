@@ -3,12 +3,12 @@ extends Node
 var lifes_number = 3
 var coins_number = 0
 var player_level = 3
-var checkpoint = 1
+var checkpoint = 2
 
 func reset_variables(quit):
 	coins_number = 0
 	lifes_number = 3
-	checkpoint = 1
+	checkpoint = 2
 	Global.player_dead = false
 	if quit:
 		player_level = 1
