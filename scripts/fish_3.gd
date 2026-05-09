@@ -7,9 +7,13 @@ extends Node2D
 @onready var timer = $Timer
 
 const RANGE = 130
-const SPEED = 150
+var SPEED = 100
 var direction 
 var start_running = false
+
+func _ready():
+	if Global.is_hardcore:
+		SPEED = 150
 
 func _process(delta):
 	var distance = player.position.x - position.x

@@ -56,8 +56,8 @@ position = Vector2(0, 4)
 curve = SubResource("Curve2D_vg7hd")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(238.68, -78.4022)
-progress = 546.374
+position = Vector2(199.592, -68.9848)
+progress = 506.114
 rotates = false
 script = ExtResource("1_tdqtd")
 process = true
@@ -66,7 +66,6 @@ process = true
 sprite_frames = SubResource("SpriteFrames_kd7aa")
 autoplay = "default"
 frame_progress = 0.469963
-flip_h = true
 
 [node name="Killzone" parent="Path2D/PathFollow2D" instance=ExtResource("2_rrwpc")]
 

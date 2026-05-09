@@ -25,9 +25,9 @@ func add_coin_number():
 	coins_changed.emit(PlayerVariables.coins_number)
 
 func _on_ready():
-	if !Global.is_hardcore:
-		camera_2d.position_smoothing_enabled = false
-		player.position = PlayerVariables.get_checkpoint_position()
+
+	camera_2d.position_smoothing_enabled = false
+	player.position = PlayerVariables.get_checkpoint_position()
 	
 	music.play(Global.music_time_on_kill)
 	transition.play("fade_in")
