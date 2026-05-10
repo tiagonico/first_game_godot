@@ -8,7 +8,7 @@ var in_water = false
 var in_oxygen_area = false
 var last_velocity_y = 0
 var fall_velocity_kill = 600
-var water_position_y = 2171
+var water_position_y = 1243
 var oxygen_velocity = 5
 var oxygen_level = 100
 
@@ -39,7 +39,7 @@ func _physics_process(delta):
 			JUMP_VELOCITY = -100  
 			gravity = 100
 			
-			if oxygen_level>0 and !in_oxygen_area and !Global.player_dead:
+			if oxygen_level>0 and !in_oxygen_area and !Global.player_dead and !game_manager.level_pass:
 				decrease_oxygen(delta)
 			if oxygen_level<100 and in_oxygen_area and !Global.player_dead:
 				raise_oxygen(delta)

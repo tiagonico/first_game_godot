@@ -11,6 +11,7 @@ var is_boosted = false
 var music_time_on_kill = 0
 var is_last_scene_settings = false
 var player_dead = false
+var locked = false
 
 func get_seconds():
 	return fmod(time, 60)
