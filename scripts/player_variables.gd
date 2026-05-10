@@ -8,7 +8,7 @@ var checkpoint = 0
 func reset_variables(quit):
 	coins_number = 0
 	lifes_number = 3
-	checkpoint = 0
+	checkpoint = 3
 	Global.player_dead = false
 	if quit:
 		player_level = 1
